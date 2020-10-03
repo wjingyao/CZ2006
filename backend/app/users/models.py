@@ -25,7 +25,8 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):
     username = models.CharField(max_length = 100 , unique=True)
     email = models.EmailField(max_length=255, unique=True)
-    name = models.CharField(max_length=100)
+    firstName = models.CharField(max_length = 100)
+    lastName = models.CharField(max_length= 100)
 
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -51,3 +52,38 @@ class User(AbstractBaseUser):
     #     "Is the user a member of staff?"
     #     # Simplest possible answer: All admins are staff
     #     return self.is_admin
+
+class PaymentCard(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    cardNum = models.CharField(max_length = 30)
+    ccv = models.CharField(max_length=10)
+    expiry_Date = models.CharField(max_length=25)
+
+    def __str__(self):
+        return self.cardNum
+
+
+class Vehicle(models.Model):
+    user = models.ForeignKey(User , on_delete=models.CASCADE)
+    plateNum = models.CharField(max_length=25)
+    typeOfVehicle = models.CharField(max_length=25)
+
+    def __str__(self):
+        return self.plateNum
+
+class CarPark(models.Model):
+    carparkName = models.CharField(max_length= 100)
+    total_lot = models.IntegerField()
+    lot_type = models.CharField(max_length=1)
+    lot_available = models.IntegerField()
+    carRate = models.IntegerField()
+    motorcycleRate = models.IntegerField()
+    heavyVehicleRate = models.IntegerField()
+    postalCode = models.IntegerField()
+    address = models.CharField(max_length=100)
+    x= models.FloatField()
+    y = models.FloatField()
+
+    def __str__(self):
+        retun self.carparkName
+
