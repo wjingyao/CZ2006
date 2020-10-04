@@ -1,9 +1,13 @@
 package com.CMI.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +28,12 @@ public class User {
 	private String lastName;
 	@Column(nullable = false, length = 100)
 	private String email;
+	
+	@OneToMany(mappedBy = "user" , cascade = CascadeType.ALL , orphanRemoval = true)
+	private List<PaymentCard> paymentCards;
+	
+	@OneToMany(mappedBy = "user" , cascade = CascadeType.ALL , orphanRemoval = true)
+	private List<Vehicle> vehicles;
 
 	public User() {
 
@@ -77,4 +87,36 @@ public class User {
 		this.email = email;
 	}
 
+	public List<PaymentCard> getPaymentCards() {
+		return paymentCards;
+	}
+
+	public void setPaymentCards(List<PaymentCard> paymentCards) {
+		this.paymentCards = paymentCards;
+	}
+
+	public List<Vehicle> getVehicles() {
+		return vehicles;
+	}
+
+	public void setVehicles(List<Vehicle> vehicles) {
+		this.vehicles = vehicles;
+	}
+	
+   public void addPaymentCard(PaymentCard paymentCard) {
+	   this.paymentCards.add(paymentCard);
+	   paymentCard.setUser(this);
+   }
+   public void deletePaymentCard(PaymentCard paymentCard) {
+	   this.paymentCards.remove(paymentCard);
+	   paymentCard.setUser(null);
+   }
+   public void addVehicle(Vehicle vehicle) {
+	   this.vehicles.add(vehicle);
+	   vehicle.setUser(this);
+   }
+   public void deleteVehicle(Vehicle vehicle) {
+	   this.vehicles.remove(vehicle);
+	   vehicle.setUser(null);
+   }
 }

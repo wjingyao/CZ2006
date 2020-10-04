@@ -9,6 +9,7 @@ import com.CMI.service.BookingService;
 
 @RestController
 public class BookingController {
+	
 	@Autowired
 	private BookingService service;
 	

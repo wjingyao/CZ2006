@@ -19,9 +19,8 @@ public class Vehicle {
 	@Column(unique = true)
 	private int id;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user", nullable = false)
-	@OnDelete(action = OnDeleteAction.CASCADE)
 	private User user;
 	private String plateNum;
 	private String typeOfVehicle;

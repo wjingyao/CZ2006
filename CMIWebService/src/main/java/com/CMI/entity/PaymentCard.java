@@ -2,6 +2,7 @@ package com.CMI.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -18,10 +19,8 @@ public class PaymentCard {
 	@GeneratedValue
 	@Column(unique = true)
 	private int id;
-
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user", nullable = false)
-	@OnDelete(action = OnDeleteAction.CASCADE)
 	private User user;
 	@Column(nullable = false, length = 25)
 	private int cardNum;
