@@ -19,7 +19,7 @@ public class PaymentCardController {
 	private UserService userService;
 		
 	
-	public PaymentCard AddPaymentCard(PaymentCard paymentCard) {
+	public PaymentCard addPaymentCard(PaymentCard paymentCard) {
 		return service.savePaymentCard(paymentCard);
 	}
 	
@@ -27,7 +27,7 @@ public class PaymentCardController {
 		return service.updatePaymentCard(paymentCard);
 	}
 	
-	public String DeletePaymentCard(int id) {
+	public String deletePaymentCard(int id) {
 		return service.deletePaymentCard(id);
 	}
 	

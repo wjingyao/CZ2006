@@ -13,8 +13,9 @@ public class CarPark {
 	@GeneratedValue
 	@Column(unique = true)
 	private int id;
-	private String carkparkName;
+	private String carkParkName;
 	private int total_lot;
+	private char lot_type;
 	private int lot_available;
 	private double carRate;
 	private double motorcycleRate;
@@ -36,12 +37,13 @@ public class CarPark {
 		this.id = id;
 	}
 
-	public String getCarkparkName() {
-		return carkparkName;
+	
+	public String getCarkParkName() {
+		return carkParkName;
 	}
 
-	public void setCarkparkName(String carkparkName) {
-		this.carkparkName = carkparkName;
+	public void setCarkParkName(String carkParkName) {
+		this.carkParkName = carkParkName;
 	}
 
 	public int getTotal_lot() {
@@ -50,6 +52,15 @@ public class CarPark {
 
 	public void setTotal_lot(int total_lot) {
 		this.total_lot = total_lot;
+	}
+
+	
+	public char getLot_type() {
+		return lot_type;
+	}
+
+	public void setLot_type(char lot_type) {
+		this.lot_type = lot_type;
 	}
 
 	public int getLot_available() {

@@ -13,7 +13,7 @@ public class CarParkController {
 	@Autowired
 	private CarParkService service;
 	
-	public List<CarPark> SearchCarparkByPostalCode(int PostalCode){
+	public List<CarPark> searchCarparkByPostalCode(int PostalCode){
 		//return placeholder
 		return service.getCarParks();
 	}
