@@ -1,6 +1,17 @@
 package com.CMI.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "CarPark")
 public class CarPark {
+	@Id
+	@GeneratedValue
+	@Column(unique = true)
 	private int id;
 	private String carkparkName;
 	private int total_lot;
@@ -12,9 +23,9 @@ public class CarPark {
 	private String Address;
 	private double x;
 	private double y;
-	
+
 	public CarPark() {
-		
+
 	}
 
 	public int getId() {
@@ -104,5 +115,5 @@ public class CarPark {
 	public void setY(double y) {
 		this.y = y;
 	}
-	
+
 }

@@ -1,45 +1,65 @@
 package com.CMI.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+@Entity
+@Table(name = "Vehicle")
 public class Vehicle {
-		private int id;
-		private User user;
-		private String plateNum;
-		private String typeOfVehicle;
-		
-		public Vehicle() {
-			
-		}
+	@Id
+	@GeneratedValue
+	@Column(unique = true)
+	private int id;
+	
+	@ManyToOne
+	@JoinColumn(name = "user", nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private User user;
+	private String plateNum;
+	private String typeOfVehicle;
 
-		public int getId() {
-			return id;
-		}
+	public Vehicle() {
 
-		public void setId(int id) {
-			this.id = id;
-		}
+	}
 
-		public User getUser() {
-			return user;
-		}
+	public int getId() {
+		return id;
+	}
 
-		public void setUser(User user) {
-			this.user = user;
-		}
+	public void setId(int id) {
+		this.id = id;
+	}
 
-		public String getPlateNum() {
-			return plateNum;
-		}
+	public User getUser() {
+		return user;
+	}
 
-		public void setPlateNum(String plateNum) {
-			this.plateNum = plateNum;
-		}
+	public void setUser(User user) {
+		this.user = user;
+	}
 
-		public String getTypeOfVehicle() {
-			return typeOfVehicle;
-		}
+	public String getPlateNum() {
+		return plateNum;
+	}
 
-		public void setTypeOfVehicle(String typeOfVehicle) {
-			this.typeOfVehicle = typeOfVehicle;
-		}
-		
+	public void setPlateNum(String plateNum) {
+		this.plateNum = plateNum;
+	}
+
+	public String getTypeOfVehicle() {
+		return typeOfVehicle;
+	}
+
+	public void setTypeOfVehicle(String typeOfVehicle) {
+		this.typeOfVehicle = typeOfVehicle;
+	}
+
 }

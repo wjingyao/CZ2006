@@ -28,7 +28,7 @@ public class PaymentCardService {
 		return repository.findAll();
 	}
 	
-	public String deleteUser(int id) {
+	public String deletePaymentCard(int id) {
 		repository.deleteById(id);
 		return "delete payment Card successfully";
 	}

@@ -20,20 +20,20 @@ public class PaymentCard {
 	private int id;
 
 	@ManyToOne
-	@JoinColumn(name = "user", nullable = false )
+	@JoinColumn(name = "user", nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private User user;
-	@Column(nullable = false , length = 25)
+	@Column(nullable = false, length = 25)
 	private int cardNum;
-	@Column(nullable = false , length = 25)
+	@Column(nullable = false, length = 25)
 	private int ccv;
-	@Column(nullable = false , length = 25)
+	@Column(nullable = false, length = 25)
 	private String expiry_date;
-	
 
 	public PaymentCard() {
-		
+
 	}
+
 	public int getId() {
 		return id;
 	}
@@ -73,6 +73,5 @@ public class PaymentCard {
 	public void setExpiry_date(String expiry_date) {
 		this.expiry_date = expiry_date;
 	}
-	
-	
+
 }

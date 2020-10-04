@@ -9,36 +9,33 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "User")
 public class User {
-	 @Id
-	 @GeneratedValue
-	 @Column(unique = true)
-	 private int id;
-	 
-	 @Column(nullable = false , length = 30)
-	 private String username;
-	 @Column(nullable = false , length = 100)
-	 private String password;
-	 @Column(nullable = false , length = 30)
-	 private String firstName;
-	 @Column(nullable = false , length = 30)
-	 private String lastName;
-	 @Column(nullable = false , length = 100)
-	 private String email;
-	 
+	@Id
+	@GeneratedValue
+	@Column(unique = true)
+	private int id;
 
-	 public User() {
-		 
-	 }
-	 
+	@Column(nullable = false, length = 30)
+	private String username;
+	@Column(nullable = false, length = 100)
+	private String password;
+	@Column(nullable = false, length = 30)
+	private String firstName;
+	@Column(nullable = false, length = 30)
+	private String lastName;
+	@Column(nullable = false, length = 100)
+	private String email;
+
+	public User() {
+
+	}
+
 	public int getId() {
 		return id;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 	public String getUsername() {
 		return username;
@@ -79,6 +76,5 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	 
-	 
+
 }
