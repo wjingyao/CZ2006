@@ -23,7 +23,7 @@ public class PaymentCard {
 	@JoinColumn(name = "user", nullable = false)
 	private User user;
 	@Column(nullable = false, length = 25)
-	private int cardNum;
+	private String cardNum;
 	@Column(nullable = false, length = 25)
 	private int ccv;
 	@Column(nullable = false, length = 25)
@@ -49,11 +49,11 @@ public class PaymentCard {
 		this.user = user;
 	}
 
-	public int getCardNum() {
+	public String getCardNum() {
 		return cardNum;
 	}
 
-	public void setCardNum(int cardNum) {
+	public void setCardNum(String cardNum) {
 		this.cardNum = cardNum;
 	}
 

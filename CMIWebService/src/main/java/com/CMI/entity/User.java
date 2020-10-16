@@ -1,5 +1,6 @@
 package com.CMI.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -40,11 +41,11 @@ public class User {
 	
 	@JsonView(UserView.View.class)
 	@OneToMany(mappedBy = "user" , cascade = CascadeType.ALL , orphanRemoval = true)
-	private List<PaymentCard> paymentCards;
+	private List<PaymentCard> paymentCards = new ArrayList<PaymentCard>();
 	
 	@JsonView(UserView.View.class)
 	@OneToMany(mappedBy = "user" , cascade = CascadeType.ALL , orphanRemoval = true)
-	private List<Vehicle> vehicles;
+	private List<Vehicle> vehicles = new ArrayList<Vehicle>();
 
 	public User() {
 
