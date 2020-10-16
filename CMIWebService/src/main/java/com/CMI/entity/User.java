@@ -10,28 +10,39 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.CMI.dtoView.UserView;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "User")
 public class User {
+	@JsonView(UserView.View.class)
 	@Id
 	@GeneratedValue
 	@Column(unique = true)
 	private int id;
-
+	
+	@JsonView(UserView.View.class)
 	@Column(nullable = false, length = 30)
 	private String username;
+	
 	@Column(nullable = false, length = 100)
 	private String password;
+	@JsonView(UserView.View.class)
 	@Column(nullable = false, length = 30)
 	private String firstName;
+	@JsonView(UserView.View.class)
 	@Column(nullable = false, length = 30)
 	private String lastName;
+	@JsonView(UserView.View.class)
 	@Column(nullable = false, length = 100)
 	private String email;
 	
+	@JsonView(UserView.View.class)
 	@OneToMany(mappedBy = "user" , cascade = CascadeType.ALL , orphanRemoval = true)
 	private List<PaymentCard> paymentCards;
 	
+	@JsonView(UserView.View.class)
 	@OneToMany(mappedBy = "user" , cascade = CascadeType.ALL , orphanRemoval = true)
 	private List<Vehicle> vehicles;
 
