@@ -13,7 +13,8 @@ public class CarPark {
 	@GeneratedValue
 	@Column(unique = true)
 	private int id;
-	private String carkParkName;
+	@Column(name = "carParkName")
+	private String carParkName;
 	private int total_lot;
 	private char lot_type;
 	private int lot_available;
@@ -38,12 +39,12 @@ public class CarPark {
 	}
 
 	
-	public String getCarkParkName() {
-		return carkParkName;
+	public String getCarParkName() {
+		return carParkName;
 	}
 
-	public void setCarkParkName(String carkParkName) {
-		this.carkParkName = carkParkName;
+	public void setCarkParkName(String carParkName) {
+		this.carParkName = carParkName;
 	}
 
 	public int getTotal_lot() {

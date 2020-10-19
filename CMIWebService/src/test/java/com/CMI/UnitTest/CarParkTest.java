@@ -18,13 +18,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.CMI.entity.CarPark;
-import com.CMI.entity.PaymentCard;
-import com.CMI.entity.User;
-import com.CMI.entity.Vehicle;
 import com.CMI.repository.CarParkRepository;
-import com.CMI.repository.UserRepository;
 import com.CMI.service.CarParkService;
-import com.CMI.service.UserService;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -78,7 +74,12 @@ public class CarParkTest {
 	   assertThat(service.getCarParkById(1).getId()).isEqualTo(1);
    }
    
-   
+   @Test
+   public void getCarParkByNameTest() {
+	   
+	   when(repository.getCarParksByCarParkName("CarPark Name")).thenReturn(Stream.of(carPark).collect(Collectors.toList()));
+	   assertThat(service.getCarParksByCarParkName("CarPark Name").size()).isEqualTo(1);
+   }
    @Test
    public void saveUserTest() {
 	   when(repository.save(carPark)).thenReturn(carPark);

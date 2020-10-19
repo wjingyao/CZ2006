@@ -96,6 +96,7 @@ public class BookingTest {
 				booking,booking2).collect(Collectors.toList()));
 		assertThat(service.getBookings().size()).isEqualTo(2);
 	}
+	
    @Test
    public void getBookingByIdTest() {
 	  when(repository.findById(1)).thenReturn(Optional.of(booking));
