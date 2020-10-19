@@ -11,6 +11,7 @@ import com.CMI.repository.BookingRepository;
 
 @Service
 public class BookingService {
+	
 	@Autowired
 	private BookingRepository repository;
 		

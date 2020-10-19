@@ -11,6 +11,7 @@ import com.CMI.repository.PaymentCardRepository;
 
 @Service
 public class PaymentCardService {
+	
 	@Autowired
 	private PaymentCardRepository repository;
 		

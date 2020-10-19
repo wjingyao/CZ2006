@@ -76,7 +76,7 @@ public class UserTest {
    }
    
    @Test
-   public void getUserByUsername() {
+   public void getUserByUsernameTest() {
 	   when(repository.findByUsername("test")).thenReturn(user);
 	   assertThat(service.getUserByUsername("test")).isEqualTo(user);
    }

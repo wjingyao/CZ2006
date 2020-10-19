@@ -16,7 +16,7 @@ public class CarParkService {
 	@Autowired
 	private CarParkRepository repository;
 		
-	public CarPark savePaymentCard(CarPark carPark) {
+	public CarPark saveCarPark(CarPark carPark) {
 		return repository.save(carPark);
 	}
 	
