@@ -24,9 +24,6 @@ public class PaymentCardService {
 	public List<PaymentCard> getPaymentCardsByUser(User user){
 		return repository.getPaymentCardsByUser(user);
 	}
-	public List<PaymentCard> getPaymentCards(){
-		return repository.findAll();
-	}
 	
 	public String deletePaymentCard(int id) {
 		repository.deleteById(id);
