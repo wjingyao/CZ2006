@@ -46,9 +46,7 @@ public class UserController {
 	
 	@PostMapping("api/users/register")
 	public User createUser(@RequestBody User user) {
-		System.out.println(user.getPassword());
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		System.out.println(user.getPassword());
 		return service.saveUser(user);
 	}
 	

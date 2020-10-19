@@ -24,9 +24,6 @@ public class VehicleService {
 	public List<Vehicle> getVehiclesByUser(User user){
 		return repository.getVehiclesByUser(user);
 	}
-	public List<Vehicle> getVehicle(){
-		return repository.findAll();
-	}
 	
 	public String deleteVehicle(int id) {
 		repository.deleteById(id);
