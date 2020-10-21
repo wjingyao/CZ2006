@@ -11,11 +11,12 @@ import com.CMI.entity.CarPark;
 
 public interface CarParkRepository  extends JpaRepository<CarPark,Integer>{
 		
- 
+	//CarPark getCarParksByPostalCode(int postalCode);
+	
 	List<CarPark> getCarParksByCarParkName(String carParkName);
 	
-	String HAVERSINE_FORMULA = "(6371 * acos(cos(radians(:x)) * cos(radians(s.x)) *" +
-	        " cos(radians(s.y) - radians(:y)) + sin(radians(:x)) * sin(radians(s.x))))";
+	String HAVERSINE_FORMULA = "(6371 * acos(cos(radians(:x)) * cos(radians(c.x)) *" +
+	        " cos(radians(c.y) - radians(:y)) + sin(radians(:x)) * sin(radians(c.x))))";
 	
 	@Query("SELECT c FROM CarPark c WHERE " + HAVERSINE_FORMULA + " < :distance ORDER BY "+ HAVERSINE_FORMULA + " DESC")
 	List<CarPark> getNearbyCarParksByCoord(@Param("x") double x, @Param("y") double y, @Param("distance") double distance);
