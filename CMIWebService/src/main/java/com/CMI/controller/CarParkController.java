@@ -33,6 +33,7 @@ public class CarParkController {
 	public CarPark updateCarparkAvailableLots(@PathVariable int id , @RequestBody int num) {
 		CarPark cp = service.getCarParkById(id);
 		cp.setLot_available(cp.getLot_available()+num);
+		
 		return service.updateCarPark(cp);
 	}
 	
