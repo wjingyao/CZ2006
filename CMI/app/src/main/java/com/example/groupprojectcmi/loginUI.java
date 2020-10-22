@@ -1,0 +1,148 @@
+package com.example.groupprojectcmi;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
+public class loginUI extends AppCompatActivity {
+
+    EditText lUser, lPassword, lEmail;
+    TextView lNewUser;
+    Button lButton;
+
+    FirebaseAuth fAuth;
+    //FirebaseDatabase fdatarootNode;
+    //DatabaseReference reference;
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login_u_i);
+
+
+        lEmail =findViewById(R.id.login_Email);
+        lPassword = findViewById(R.id.login_Password);
+        lNewUser = findViewById(R.id.login_NewUser);
+        lButton = findViewById(R.id.login_Button);
+
+
+        //instantiate firebase authentication
+        fAuth = FirebaseAuth.getInstance();
+        //instantiate fire database
+        //fdatarootNode = FirebaseDatabase.getInstance();
+
+
+        lButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //declaration of where i get the item from it
+                String email = lEmail.getText().toString().trim();
+                String password = lPassword.getText().toString().trim();
+
+
+
+                //check if email is enter or not
+                if (TextUtils.isEmpty(email)) {
+                    lUser.setError("Email is Required");
+                    return;
+                }
+
+                //check if password is enter or not
+                if (TextUtils.isEmpty(password)) {
+                    lPassword.setError("Password is Required");
+                    return;
+                }
+
+                //check if password is more than 6 characters
+                if (password.length() < 6) {
+                    lPassword.setError("Password Must be >= 6 characters");
+                    return;
+                }
+
+
+                /*
+                reference = fdatarootNode.getReference("userStorage");
+
+                Query checkUser = reference.orderByChild("username1").equalTo(password);
+
+                checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()) {
+
+                            String passwordFromDB = snapshot.child(user).child("password1").getValue(String.class);
+
+                            if(passwordFromDB.equals(password)) {
+                                String usernameFromDB = snapshot.child(user).child("username1").getValue(String.class);
+                                String emailFromDB = snapshot.child(user).child("email1").getValue(String.class);
+
+                                Intent intent = new Intent(getApplicationContext(), loginUI.class);
+
+                                intent.putExtra("username1", usernameFromDB);
+                                intent.putExtra("email1", emailFromDB);
+
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
+                            }
+                            else{
+                                lPassword.setError("Wrong Password");
+
+                            }
+
+                        }
+                        else{
+                            lUser.setError("No such User exist");
+
+                        }
+                    }
+                    //we will not be usng this onCancelled
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
+                */
+
+
+                //authenticate the user
+                fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(com.example.groupprojectcmi.loginUI.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        }
+                        else {
+                            Toast.makeText(com.example.groupprojectcmi.loginUI.this, "Error !" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
+            }
+        });
+
+        //when user click on -New User?, it will bring them to register page
+        lNewUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), com.example.groupprojectcmi.registerUI.class));
+            }
+        });
+
+    }
+}

@@ -1,4 +1,4 @@
-package com.example.cmi;
+package com.example.groupprojectcmi;
 
 import android.content.Context;
 
