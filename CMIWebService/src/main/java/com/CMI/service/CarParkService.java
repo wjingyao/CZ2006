@@ -23,7 +23,10 @@ public class CarParkService {
 	public CarPark getCarParkById(int id){
 		return repository.findById(id).orElse(null);
 	}
-
+	/*
+	public CarPark getCarParkByPostalCode(int postalCode) {
+		return repository.getCarParksByPostalCode(postalCode);
+	}*/
 	public List<CarPark> getCarParks(){
 		return repository.findAll();
 	}
