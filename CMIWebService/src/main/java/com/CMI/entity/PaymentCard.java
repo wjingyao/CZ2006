@@ -12,20 +12,33 @@ import javax.persistence.Table;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.CMI.dtoView.UserView;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "PaymentCard")
 public class PaymentCard {
 	@Id
 	@GeneratedValue
 	@Column(unique = true)
+	@JsonView(UserView.View.class)
 	private int id;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user", nullable = false)
+	@JsonBackReference
 	private User user;
+	
+	@JsonView(UserView.View.class)
 	@Column(nullable = false, length = 25)
 	private String cardNum;
+	
+	@JsonView(UserView.View.class)
 	@Column(nullable = false, length = 25)
 	private int ccv;
+	
+	@JsonView(UserView.View.class)
 	@Column(nullable = false, length = 25)
 	private String expiry_date;
 

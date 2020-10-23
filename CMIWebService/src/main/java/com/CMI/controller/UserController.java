@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.bind.validation.ValidationBindHandler;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.CMI.dtoView.UserView;
 import com.CMI.entity.User;
+import com.CMI.entity.Vehicle;
 import com.CMI.security.JwtUtil;
 import com.CMI.service.MyUserDetailsService;
 import com.CMI.service.UserService;
@@ -74,6 +76,7 @@ public class UserController {
 			ret.put("token", jwt);
 		}
 		
+		User user1 = service.getUserByUsername(user.getUsername());
 
 		return ret;
 	

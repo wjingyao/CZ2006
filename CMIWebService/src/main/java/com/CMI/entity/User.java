@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.CMI.dtoView.UserView;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -41,10 +42,12 @@ public class User {
 	
 	@JsonView(UserView.View.class)
 	@OneToMany(mappedBy = "user" , cascade = CascadeType.ALL , orphanRemoval = true)
+	@JsonManagedReference
 	private List<PaymentCard> paymentCards = new ArrayList<PaymentCard>();
 	
 	@JsonView(UserView.View.class)
 	@OneToMany(mappedBy = "user" , cascade = CascadeType.ALL , orphanRemoval = true)
+	@JsonManagedReference
 	private List<Vehicle> vehicles = new ArrayList<Vehicle>();
 
 	public User() {

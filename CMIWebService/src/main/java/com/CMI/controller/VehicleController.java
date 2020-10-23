@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,9 +28,10 @@ public class VehicleController {
 	
 	
 	@PostMapping("api/vehicles/create")
-	public Vehicle AddVehicle(Vehicle vehicle , @RequestParam int userId) {
+	public Vehicle AddVehicle(@RequestBody Vehicle vehicle , @RequestParam int userId) {
 		User user = userService.getUserById(userId);
 		vehicle.setUser(user);
+		System.out.println(vehicle.getPlateNum());
 		return service.saveVehicle(vehicle);
 	}
 	
