@@ -83,31 +83,7 @@
                 android:textColorHint="@android:color/background_dark"
                 android:textSize="24sp" />
 
-            <EditText
-                android:id="@+id/register_PhoneNum"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="5dp"
-                android:ems="10"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:hint="Phone Number:"
-                android:inputType="number"
-                android:textColorHint="@android:color/background_dark"
-                android:textSize="24sp"/>
 
-            <EditText
-                android:id="@+id/register_PlateNum"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="5dp"
-                android:ems="10"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:hint="Plate Number:"
-                android:inputType="textPersonName"
-                android:textColorHint="@android:color/background_dark"
-                android:textSize="24sp" />
 
             <RadioGroup
                 android:id="@+id/radio_selectVehicle"

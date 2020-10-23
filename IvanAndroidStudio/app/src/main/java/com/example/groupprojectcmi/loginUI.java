@@ -29,10 +29,7 @@ public class loginUI extends AppCompatActivity {
     TextView lNewUser;
     Button lButton;
 
-    FirebaseAuth fAuth;
-
-
-
+    //FirebaseAuth fAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +44,7 @@ public class loginUI extends AppCompatActivity {
 
 
         //instantiate fire authenthecation
-        fAuth = FirebaseAuth.getInstance();
-
-
+        //fAuth = FirebaseAuth.getInstance();
 
         lButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +52,6 @@ public class loginUI extends AppCompatActivity {
                 //declaration of where i get the item from it
                 String email = lEmail.getText().toString().trim();
                 String password = lPassword.getText().toString().trim();
-
 
 
                 //check if email is enter or not
@@ -79,62 +73,20 @@ public class loginUI extends AppCompatActivity {
                 }
 
 
-                /*
-                reference = fdatarootNode.getReference("userStorage");
-
-                Query checkUser = reference.orderByChild("username1").equalTo(password);
-
-                checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.exists()) {
-
-                            String passwordFromDB = snapshot.child(user).child("password1").getValue(String.class);
-
-                            if(passwordFromDB.equals(password)) {
-                                String usernameFromDB = snapshot.child(user).child("username1").getValue(String.class);
-                                String emailFromDB = snapshot.child(user).child("email1").getValue(String.class);
-
-                                Intent intent = new Intent(getApplicationContext(), loginUI.class);
-
-                                intent.putExtra("username1", usernameFromDB);
-                                intent.putExtra("email1", emailFromDB);
-
-                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-
-                            }
-                            else{
-                                lPassword.setError("Wrong Password");
-
-                            }
-
-                        }
-                        else{
-                            lUser.setError("No such User exist");
-
-                        }
-                    }
-                    //we will not be usng this onCancelled
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                    }
-                });
-                */
-
 
                 //authenticate the user
-                fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(loginUI.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        }
-                        else {
-                            Toast.makeText(loginUI.this, "Error !" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                //fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                   // @Override
+                   // public void onComplete(@NonNull Task<AuthResult> task) {
+                   //     if(task.isSuccessful()){
+                   //         Toast.makeText(loginUI.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
+                   //         startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                  //      }
+                  //      else {
+                  //          Toast.makeText(loginUI.this, "Error !" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    //    }
+                  //  }
+              //  });
 
 
             }
