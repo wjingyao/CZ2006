@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.CMI.entity.Booking;
+import com.CMI.entity.CarPark;
+import com.CMI.entity.User;
+import com.CMI.entity.Vehicle;
 import com.CMI.service.BookingService;
 import com.CMI.service.CarParkService;
 import com.CMI.service.UserService;
@@ -31,10 +34,13 @@ public class BookingController {
 	private VehicleService vehicleService;
 	
 	@Autowired
-	private CarParkService carparkService;
+	private CarParkService carParkService;
 	
 	@PostMapping("api/bookings/create")
 	public Booking createBooking(@RequestBody Booking booking ,  @RequestParam int userId ,  @RequestParam int vehicleId , @RequestParam int carParkId) {
+		User user = userService.getUserById(userId);
+		Vehicle vehicle = vehicleService.getVehicleById(vehicleId);
+		CarPark carPark = carParkService.getCarParkById(carParkId);
 		booking.setUser(user);
 		booking.setVehicle(vehicle);
 		booking.setCarPark(carPark);
