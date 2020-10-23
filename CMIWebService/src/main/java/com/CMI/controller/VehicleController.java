@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.CMI.entity.PaymentCard;
+import com.CMI.entity.User;
 import com.CMI.entity.Vehicle;
 import com.CMI.service.UserService;
 import com.CMI.service.VehicleService;
@@ -26,7 +27,9 @@ public class VehicleController {
 	
 	
 	@PostMapping("api/vehicles/create")
-	public Vehicle AddVehicle(Vehicle vehicle) {
+	public Vehicle AddVehicle(Vehicle vehicle , @RequestParam int userId) {
+		User user = userService.getUserById(userId);
+		vehicle.setUser(user);
 		return service.saveVehicle(vehicle);
 	}
 	

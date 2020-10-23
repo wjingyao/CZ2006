@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.CMI.entity.PaymentCard;
+import com.CMI.entity.User;
 import com.CMI.service.PaymentCardService;
 import com.CMI.service.UserService;
 
@@ -24,7 +25,9 @@ public class PaymentCardController {
 	private UserService userService;
 		
 	@PostMapping("api/paymentCards/create")
-	public PaymentCard addPaymentCard(PaymentCard paymentCard) {
+	public PaymentCard addPaymentCard(PaymentCard paymentCard ,  @RequestParam int userId) {
+		User user = userService.getUserById(userId);
+		paymentCard.setUser(user);
 		return service.savePaymentCard(paymentCard);
 	}
 	@PutMapping("api/paymentCards/{id}")

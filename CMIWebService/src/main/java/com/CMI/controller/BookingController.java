@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.CMI.entity.Booking;
 import com.CMI.service.BookingService;
+import com.CMI.service.CarParkService;
 import com.CMI.service.UserService;
+import com.CMI.service.VehicleService;
 
 @RestController
 public class BookingController {
@@ -25,8 +27,17 @@ public class BookingController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private VehicleService vehicleService;
+	
+	@Autowired
+	private CarParkService carparkService;
+	
 	@PostMapping("api/bookings/create")
-	public Booking createBooking(@RequestBody Booking booking) {
+	public Booking createBooking(@RequestBody Booking booking ,  @RequestParam int userId ,  @RequestParam int vehicleId , @RequestParam int carParkId) {
+		booking.setUser(user);
+		booking.setVehicle(vehicle);
+		booking.setCarPark(carPark);
 		return service.saveBooking(booking);
 	}
 	
