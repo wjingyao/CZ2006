@@ -123,7 +123,6 @@ public class registerUI extends AppCompatActivity {
                         .build();
 
 
-
                 client.newCall(request).enqueue(new Callback() {
                     @Override
                     public void onFailure(@NotNull Call call, @NotNull IOException e) {
@@ -141,10 +140,12 @@ public class registerUI extends AppCompatActivity {
                                 public void run() {
                                     Toast.makeText(registerUI.this, "sign up successfully", Toast.LENGTH_SHORT).show();
                                     //this startactivity step brings the user to the main activivty page aka home page
-                                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                                    intent.putExtra("SESSION_ID", user);
+                                    startActivity(intent);
                                 }
                             });
-                        //if user input wrong
+                            //if user input wrong
                         } else {
                             registerUI.this.runOnUiThread(new Runnable() {
                                 @Override
@@ -158,6 +159,7 @@ public class registerUI extends AppCompatActivity {
                     }
 
                 });
+
 
 
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/carpark_background"
+    android:background="@color/white"
     tools:context=".loginUI">
 
     <ScrollView
@@ -25,25 +25,25 @@
                 app:srcCompat="@drawable/white_logo_color_background_removebg_preview" />
 
             <EditText
-                android:id="@+id/login_Email"
+                android:id="@+id/login_User"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:hint="Email:"
+                android:hint="Username:"
                 android:textColorHint="@android:color/background_dark"
                 android:ems="10"
-                android:inputType="textEmailAddress"
+                android:inputType="textPersonName"
                 android:textSize="24sp"/>
 
 
             <TextView
-                android:id="@+id/login_Forgotemail"
+                android:id="@+id/login_ForgotUser"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:text="-Forgot Email?"
+                android:text="-Forgot Username?"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 

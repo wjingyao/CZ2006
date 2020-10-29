@@ -1,31 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="176dp"
-    android:gravity="bottom"
+
     android:background="@color/teal_200"
 
     android:padding="16dp"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark"
-    android:orientation="vertical">
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher_round"/>
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="41dp"
+        android:src="@mipmap/ic_launcher_round" />
+
 
     <TextView
-        android:id="@+id/header_name1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        />
+        android:id="@+id/text_sessionId"
+        android:layout_width="154dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="43dp"
+        android:layout_marginLeft="55dp"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
 
-    <TextView
-        android:id="@+id/header_email1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
-
-
-</LinearLayout>
+</RelativeLayout>

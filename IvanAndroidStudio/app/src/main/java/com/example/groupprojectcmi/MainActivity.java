@@ -15,17 +15,23 @@ import android.widget.TextView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
+import android.view.Window;
+
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-
+    String sessionId;
     private DrawerLayout drawer;
+    TextView txt_Session;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sessionId = getIntent().getStringExtra("SESSION_ID");
+
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -39,6 +45,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+        txt_Session = (TextView)navigationView.getHeaderView(0).findViewById(R.id.text_sessionId);
+        txt_Session.setText(sessionId);
 
         //this code is to show my intended first page to the user when the app in turn on
         if (savedInstanceState == null) {
