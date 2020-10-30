@@ -41,8 +41,8 @@ public class PaymentCardController {
 	}
 	
 	@GetMapping("api/paymentCards/")
-	public List<PaymentCard> getPaymentCardsByUser(@RequestParam int UserID){ 
-		return service.getPaymentCardsByUser(userService.getUserById(UserID));
+	public List<PaymentCard> getPaymentCardsByUser(@RequestParam int userId){ 
+		return service.getPaymentCardsByUser(userService.getUserById(userId));
 		
 	}
 }

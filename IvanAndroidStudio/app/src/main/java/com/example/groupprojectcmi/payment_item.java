@@ -1,13 +1,19 @@
 package com.example.groupprojectcmi;
 
 public class payment_item {
+    int paymentId;
     String paymentCardNo;
     String expiryDate;
 
-    public payment_item(String ipaymentCardNo, String iexpiryDate) {
+    public payment_item(int ipaymentId, String ipaymentCardNo, String iexpiryDate) {
+        paymentId = ipaymentId;
         paymentCardNo = ipaymentCardNo;
         expiryDate = iexpiryDate;
     }
+
+    public int getPaymentId() { return paymentId; }
+
+    public void setPaymentId(int ipaymentId) { this.paymentId = ipaymentId; }
 
     public String getPaymentCardNo() { return paymentCardNo; }
 

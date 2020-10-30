@@ -6,54 +6,47 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/paymentRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
         android:padding="4dp"
         android:background="@android:color/white"
         android:scrollbars="vertical"
         />
-
-    <EditText
-        android:id="@+id/add_CardNo"
-        android:layout_width="300dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="57dp"
-        android:layout_marginBottom="149dp"
-        android:hint="Card Number" />
+        android:layout_marginBottom="-7dp"
+        android:orientation="vertical"
+        android:background="@color/white">
 
-    <EditText
-        android:id="@+id/add_CCV"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="55dp"
-        android:layout_marginBottom="99dp"
-        android:hint="CCV" />
+        <EditText
+            android:id="@+id/add_CardNo"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:hint="Card Number" />
 
-    <EditText
-        android:id="@+id/add_Expiry"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="57dp"
-        android:layout_marginBottom="54dp"
-        android:hint="Expiry Date" />
+        <EditText
+            android:id="@+id/add_CCV"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:hint="CCV" />
 
-    <Button
-        android:id="@+id/addPaymentBtn"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="0dp"
-        android:text="Add Payment" />
+        <EditText
+            android:id="@+id/add_Expiry"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:hint="Expiry Date" />
 
+        <Button
+            android:id="@+id/addPaymentBtn"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:text="Add Payment" />
 
+    </LinearLayout>
 </RelativeLayout>

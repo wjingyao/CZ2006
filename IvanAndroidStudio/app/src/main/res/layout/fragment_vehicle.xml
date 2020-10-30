@@ -12,32 +12,26 @@
         android:scrollbars="vertical"
         />
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="208dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="-7dp"
+        android:orientation="vertical"
         android:background="@color/white">
 
         <EditText
             android:id="@+id/addVehicle"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="false"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="57dp"
-            android:layout_marginBottom="149dp"
+            android:layout_gravity="center_horizontal"
             android:hint="Vehicle Plate Number" />
 
         <RadioGroup
             android:id="@+id/radio_addVehicle"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="93dp"
             android:orientation="horizontal">
 
             <RadioButton
@@ -68,10 +62,9 @@
             android:id="@+id/addVehicleBtn"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="42dp"
-            android:text="Add Vehicle" />
-    </RelativeLayout>
+            android:layout_gravity="center_horizontal"
+            android:text="Add Vehicle"
+            android:layout_marginBottom="30dp"
+            />
+    </LinearLayout>
 </RelativeLayout>

@@ -43,13 +43,14 @@ import okhttp3.Response;
 public class vehicleFragment extends Fragment {
 
     RecyclerView mRecyclerView;
-    List<vehicle_item> cardList;
+    List<vehicle_item> cardList = new ArrayList<>();;
 
     EditText aVehicle;
     RadioGroup aVehicleType;
     RadioButton aCar, aMotorbike, aLorry;
     Button aBtn;
 
+    vehicle_card_adapter adapter;
 
     @Nullable
     @Override
@@ -59,7 +60,7 @@ public class vehicleFragment extends Fragment {
         mRecyclerView = rootView.findViewById(R.id.vehicleRecyclerView);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        vehicle_card_adapter adapter = new vehicle_card_adapter(initData());
+        adapter = new vehicle_card_adapter(initData());
         mRecyclerView.setAdapter(adapter);
 
         aVehicle = rootView.findViewById(R.id.addVehicle);
@@ -152,13 +153,15 @@ public class vehicleFragment extends Fragment {
     }
 
     public void update(List<vehicle_item> list){
-        vehicle_card_adapter adapter = new vehicle_card_adapter(list);
+        adapter = new vehicle_card_adapter(list);
         mRecyclerView.setAdapter(adapter);
     }
 
     private List<vehicle_item> initData() {
         //Bind user's vehicle
-        cardList = new ArrayList<>();
+
+
+
         cardList.add(new vehicle_item(3,R.drawable.ic_car_icon,"CARPLATETEST"));
         cardList.add(new vehicle_item(4,R.drawable.ic_lorry_icon,"CARPLATETEST"));
 
