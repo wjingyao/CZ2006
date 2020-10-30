@@ -41,8 +41,8 @@ public class VehicleController {
 	}
 	
 	@GetMapping("api/vehicles/")
-	public List<Vehicle> getVehiclesByUser(@RequestParam int UserID){ 
-		return service.getVehiclesByUser(userService.getUserById(UserID));
+	public List<Vehicle> getVehiclesByUser(@RequestParam int userId){ 
+		return service.getVehiclesByUser(userService.getUserById(userId));
 		
 	}
 
