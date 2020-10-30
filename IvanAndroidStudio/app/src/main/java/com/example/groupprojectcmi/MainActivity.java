@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.groupprojectcmi.api.api;
+
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -20,7 +22,7 @@ import android.view.Window;
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    String sessionId;
+    String sessionId = "ee";
     private DrawerLayout drawer;
     TextView txt_Session;
 
@@ -80,6 +82,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
                 drawer.closeDrawers();
                 break;
+            case R.id.nav_car:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new vehicleFragment()).commit();
+                drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                drawer.closeDrawers();
+                break;
             case R.id.nav_payment:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new paymentFragment()).commit();
@@ -94,7 +102,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_logout:
                 FirebaseAuth.getInstance().signOut(); ///Loutout
+                sessionId = "";
+                api.token = "";
+                api.id = 0;
                 startActivity(new Intent(getApplicationContext(),loginUI.class));
+
         }
         return true;
     }

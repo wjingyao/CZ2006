@@ -38,37 +38,11 @@
                 android:ems="10"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:hint="Email:"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="50dp"
                 android:inputType="textEmailAddress"
                 android:textColor="@android:color/black"
-                android:textColorHint="@android:color/black"
-                android:textSize="24sp" />
-
-            <EditText
-                android:id="@+id/register_Password"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="5dp"
-                android:ems="10"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:hint="Password:"
-                android:inputType="textPersonName"
-                android:textColorHint="@android:color/background_dark"
-                android:textSize="24sp" />
-
-            <EditText
-                android:id="@+id/register_ConfirmPassword"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="5dp"
-                android:ems="10"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:hint="ConfirmPassword:"
-                android:inputType="textPersonName"
-                android:textColorHint="@android:color/background_dark"
-                android:textSize="24sp" />
+                android:textColorHint="@android:color/darker_gray"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/register_Username"
@@ -80,10 +54,84 @@
                 android:fontFamily="sans-serif-condensed-medium"
                 android:hint="Username:"
                 android:inputType="textPersonName"
-                android:textColorHint="@android:color/background_dark"
-                android:textSize="24sp" />
+                android:textColorHint="@android:color/darker_gray"
+                android:textSize="20sp" />
 
+            <EditText
+                android:id="@+id/register_Firstname"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:hint="First name:"
+                android:inputType="textPersonName"
+                android:textColorHint="@android:color/darker_gray"
+                android:textSize="20sp" />
 
+            <EditText
+                android:id="@+id/register_Lastname"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:hint="Last name:"
+                android:inputType="textPersonName"
+                android:textColorHint="@android:color/darker_gray"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/register_Password"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:hint="Password:"
+                android:inputType="textPassword"
+                android:textColorHint="@android:color/darker_gray"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/register_ConfirmPassword"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:hint="ConfirmPassword:"
+                android:inputType="textPassword"
+                android:textColorHint="@android:color/darker_gray"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/register_VehiclePlate"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:ems="10"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:hint="Vehicle Plate Number:"
+                android:inputType="textNoSuggestions"
+                android:textColorHint="@android:color/darker_gray"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="70dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="Choose your Vehicle Type:"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
 
             <RadioGroup
                 android:id="@+id/radio_selectVehicle"

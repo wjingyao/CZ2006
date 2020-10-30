@@ -25,6 +25,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -89,17 +90,17 @@ public class loginUI extends AppCompatActivity {
 
                 //authenticate the user
                 //fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                   // @Override
-                   // public void onComplete(@NonNull Task<AuthResult> task) {
-                   //     if(task.isSuccessful()){
-                   //         Toast.makeText(loginUI.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-                   //         startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                  //      }
-                  //      else {
-                  //          Toast.makeText(loginUI.this, "Error !" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    //    }
-                  //  }
-              //  });
+                // @Override
+                // public void onComplete(@NonNull Task<AuthResult> task) {
+                //     if(task.isSuccessful()){
+                //         Toast.makeText(loginUI.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
+                //         startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                //      }
+                //      else {
+                //          Toast.makeText(loginUI.this, "Error !" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                //    }
+                //  }
+                //  });
 
                 MediaType JSON = MediaType.get("application/json; charset=utf-8");  //dont change this part
                 JSONObject dataBody = new JSONObject();                             //dont change this part
@@ -133,15 +134,28 @@ public class loginUI extends AppCompatActivity {
                         if (response.isSuccessful()) {
                             String myResponse = response.body().string();
                             System.out.println(myResponse);
-                            loginUI.this.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(loginUI.this, "login successfully", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                                    intent.putExtra("SESSION_ID", user);
-                                    startActivity(intent);
-                                }
-                            });
+                            try {
+                                JSONObject Jobject = new JSONObject(myResponse);
+                                api.token = Jobject.getString("token");
+                                api.id = Jobject.getJSONObject("user").getInt("id");
+                                Log.d("api id", String.valueOf(api.id));
+
+                                Log.d("api token", api.token);
+                                //Log.d("api id", api.id);
+
+
+                                loginUI.this.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(loginUI.this, "login successfully", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                                        intent.putExtra("SESSION_ID", user);
+                                        startActivity(intent);
+                                    }
+                                });
+                            } catch (JSONException e) {
+                                System.out.println("Error in token");
+                            }
                         }
                         else {
                             loginUI.this.runOnUiThread(new Runnable() {

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/vehicleRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:padding="4dp"
+        android:background="@android:color/white"
+        android:scrollbars="vertical"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="208dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-7dp"
+        android:background="@color/white">
+
+        <EditText
+            android:id="@+id/addVehicle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="57dp"
+            android:layout_marginBottom="149dp"
+            android:hint="Vehicle Plate Number" />
+
+        <RadioGroup
+            android:id="@+id/radio_addVehicle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="93dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_aCar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:button="@drawable/ic_car_icon" />
+
+            <RadioButton
+                android:id="@+id/radio_aMotorbike"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_weight="1"
+                android:button="@drawable/ic_motorbike_icon" />
+
+            <RadioButton
+                android:id="@+id/radio_aLorry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:button="@drawable/ic_lorry_icon" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/addVehicleBtn"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="42dp"
+            android:text="Add Vehicle" />
+    </RelativeLayout>
+</RelativeLayout>
