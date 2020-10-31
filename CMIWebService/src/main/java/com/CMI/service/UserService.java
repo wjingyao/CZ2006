@@ -1,19 +1,15 @@
 package com.CMI.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.CMI.entity.User;
 import com.CMI.repository.UserRepository;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UserService {
 	@Autowired
 	private UserRepository repository;
 	
@@ -38,27 +34,10 @@ public class UserService implements UserDetailsService {
 	}
 	public User updateUser(User user) {
 		User oldUser = repository.findById(user.getId()).orElse(null);
+		oldUser.setEmail(user.getEmail());
+		oldUser.setFirstName(user.getFirstName());
+		oldUser.setLastName(user.getLastName());
 		oldUser.setPassword(user.getPassword());
 		return repository.save(oldUser);
 	}
-
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
-		User user = repository.findByUsername(username);
-		
-		  if (user == null) {
-		      throw new UsernameNotFoundException("User '" + username + "' not found");
-		    }
-		  
-		  return org.springframework.security.core.userdetails.User
-			        .withUsername(username)
-			        .password(user.getPassword())
-			        .authorities(new ArrayList<>())
-			        .accountExpired(false)
-			        .accountLocked(false)
-			        .credentialsExpired(false)
-			        .disabled(false)
-			        .build();
-			  }
 }
