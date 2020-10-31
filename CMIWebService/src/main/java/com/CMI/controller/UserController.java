@@ -25,7 +25,6 @@ import com.CMI.dtoView.UserView;
 import com.CMI.entity.User;
 import com.CMI.entity.Vehicle;
 import com.CMI.security.JwtUtil;
-import com.CMI.service.MyUserDetailsService;
 import com.CMI.service.UserService;
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -33,9 +32,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 public class UserController {
 	@Autowired
 	private UserService service;
-	
-	@Autowired
-	private MyUserDetailsService userDetailsService;
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -67,7 +63,7 @@ public class UserController {
 		}
 
 		
-		final UserDetails userDetails = userDetailsService.loadUserByUsername(user.getUsername());
+		final UserDetails userDetails = service.loadUserByUsername(user.getUsername());
 		
 		final String jwt = jwtTokenUtil.generateToken(userDetails);
 		
@@ -99,11 +95,12 @@ public class UserController {
 	
 	@PutMapping("api/users/{id}")
 	public User updateUser(@PathVariable int id ,@RequestBody User user) {
+		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		return service.updateUser(user);
 	}
 	@DeleteMapping("api/users/{id}")
 	public String deleteUser(@PathVariable int id) {
-		return service.deleteUser(id);
+			return service.deleteUser(id);
 	}
 	
 }
