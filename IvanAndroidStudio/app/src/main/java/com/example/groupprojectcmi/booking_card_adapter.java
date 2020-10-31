@@ -30,32 +30,32 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class payment_card_adapter extends RecyclerView.Adapter<payment_card_adapter.payment_card_holder> {
-    List<payment_item> mPaymentList;
+public class booking_card_adapter extends RecyclerView.Adapter<booking_card_adapter.booking_card_holder> {
+    List<booking_item> mBookingList;
 
-
-    public class payment_card_holder extends RecyclerView.ViewHolder {
-        TextView cardNo, expiryDate;
+    public class booking_card_holder extends RecyclerView.ViewHolder {
+        TextView active, vehicle, carPark, dateTime;
         Button deleteBtn;
-        public payment_card_holder(View itemView) {
+        public booking_card_holder(View itemView){
             super(itemView);
-            cardNo = itemView.findViewById(R.id.card_CardNo);
-            expiryDate = itemView.findViewById(R.id.card_Expiry);
-            deleteBtn = itemView.findViewById(R.id.card_PaymentButton);
+            active = itemView.findViewById(R.id.card_BookingActive);
+            vehicle = itemView.findViewById(R.id.card_BookingVehicle);
+            carPark = itemView.findViewById(R.id.card_Carpark);
+            dateTime = itemView.findViewById(R.id.card_BookingDateTime);
+            deleteBtn = itemView.findViewById(R.id.btn_dBooking);
 
             deleteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int paymentid = mPaymentList.get(getAdapterPosition()).getPaymentId();
-
+                    int bookingid = mBookingList.get(getAdapterPosition()).getBookingId();
+                    Log.d("bookingid", String.valueOf(bookingid));
                     MediaType JSON = MediaType.get("application/json; charset=utf-8");
                     JSONObject dataBody = new JSONObject();
                     OkHttpClient client = new OkHttpClient();
-
                     RequestBody body = RequestBody.create(dataBody.toString(),JSON);  //only req change
                     Log.d("OKHTTP3", "RequestBody Created.");
                     Request request = new Request.Builder()
-                            .url(api.baseUrl + "paymentCards/"+paymentid)        //cthis is the url we can change based on different UI
+                            .url(api.baseUrl + "bookings/"+bookingid)        //cthis is the url we can change based on different UI
                             .addHeader("Authorization", "Bearer " + api.token)
                             .delete()                                 //depends on where to get or post database, we use that word respectively
                             .build();
@@ -71,16 +71,16 @@ public class payment_card_adapter extends RecyclerView.Adapter<payment_card_adap
                             if(response.isSuccessful()) {
                                 String myResponse = response.body().string();
                                 System.out.println(myResponse);
-                                mPaymentList.remove(getAdapterPosition());
+                                mBookingList.remove(getAdapterPosition());
                                 notifyItemRemoved(getAdapterPosition());
                             }
                             else
                             {
-                                Log.d("Payment", "Fail To Delete");
+                                Log.d("Booking", "Fail To Delete");
                             }
                         }
                     });
-                    Toast.makeText(v.getContext(), "Payment deleted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(v.getContext(), "Booking cancelled", Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -88,29 +88,35 @@ public class payment_card_adapter extends RecyclerView.Adapter<payment_card_adap
     }
 
 
-    public payment_card_adapter(List<payment_item> paymentList) {
-        this.mPaymentList = paymentList;
-    }
+    public booking_card_adapter(List<booking_item> bookingList) { this.mBookingList = bookingList; }
 
     @NonNull
     @Override
-    public payment_card_holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.payment_card_item, parent, false);
-        payment_card_holder vch = new payment_card_holder(v);
+    public booking_card_adapter.booking_card_holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.booking_card_item, parent, false);
+        booking_card_adapter.booking_card_holder vch = new booking_card_adapter.booking_card_holder(v);
         return vch;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull payment_card_holder holder, int position) {
-        payment_item currentItem = mPaymentList.get(position);
+    public void onBindViewHolder(@NonNull booking_card_adapter.booking_card_holder holder, int position) {
+        booking_item currentItem = mBookingList.get(position);
 
-        holder.cardNo.setText(currentItem.getPaymentCardNo());
-        holder.expiryDate.setText(currentItem.getExpiryDate());
+        holder.active.setText(currentItem.getBookingActive());
+        holder.vehicle.setText(currentItem.getVehiclePlate());
+        holder.carPark.setText(currentItem.getCarParkName());
+        holder.dateTime.setText(currentItem.getBookingDateTime());
+        if (currentItem.getBookingActive().equals("Completed"))
+        {
+          holder.deleteBtn.setVisibility(View.GONE);
+        }
 
     }
 
     @Override
     public int getItemCount() {
-        return mPaymentList.size();
+        return mBookingList.size();
     }
 }
+
+

@@ -43,7 +43,7 @@ import okhttp3.Response;
 public class vehicleFragment extends Fragment {
 
     RecyclerView mRecyclerView;
-    List<vehicle_item> cardList = new ArrayList<>();;
+    List<vehicle_item> cardList;
 
     EditText aVehicle;
     RadioGroup aVehicleType;
@@ -56,11 +56,10 @@ public class vehicleFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_vehicle, container, false);
-
         mRecyclerView = rootView.findViewById(R.id.vehicleRecyclerView);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new vehicle_card_adapter(initData());
+        vehicle_card_adapter adapter = new vehicle_card_adapter(initData());
         mRecyclerView.setAdapter(adapter);
 
         aVehicle = rootView.findViewById(R.id.addVehicle);
@@ -153,17 +152,13 @@ public class vehicleFragment extends Fragment {
     }
 
     public void update(List<vehicle_item> list){
-        adapter = new vehicle_card_adapter(list);
+        vehicle_card_adapter adapter = new vehicle_card_adapter(list);
         mRecyclerView.setAdapter(adapter);
     }
 
     private List<vehicle_item> initData() {
         //Bind user's vehicle
-
-
-
-        cardList.add(new vehicle_item(3,R.drawable.ic_car_icon,"CARPLATETEST"));
-        cardList.add(new vehicle_item(4,R.drawable.ic_lorry_icon,"CARPLATETEST"));
+        cardList = new ArrayList<>();
 
         OkHttpClient client = new OkHttpClient();
 

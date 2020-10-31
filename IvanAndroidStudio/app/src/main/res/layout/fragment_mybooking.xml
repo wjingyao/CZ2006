@@ -6,13 +6,23 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/bookingRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
         android:padding="4dp"
         android:background="@android:color/white"
         android:scrollbars="vertical"
         />
 
-
-
+    <EditText
+        android:id="@+id/refreshfix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="88dp"
+        android:layout_marginBottom="36dp"
+        android:ems="10"
+        android:text="temporary refresh fix"
+        android:inputType="textPersonName"
+        />
 
 </RelativeLayout>

@@ -50,7 +50,6 @@ public class paymentFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_payment, container, false);
-
         mRecyclerView = rootView.findViewById(R.id.paymentRecyclerView);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -140,7 +139,6 @@ public class paymentFragment extends Fragment {
     private List<payment_item> initData() {
         //Bind user's paymentcard
         cardList = new ArrayList<>();
-        cardList.add(new payment_item(3000, "TESTPAYMENTCARDNO", "10-10-23"));
 
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
@@ -184,7 +182,7 @@ public class paymentFragment extends Fragment {
                 }
             }
         });
-
+        System.out.println("success");
         return cardList;
     }
 }
