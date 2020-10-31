@@ -43,11 +43,9 @@ public class CarParkTest {
 		carPark.setCarRate(7.3);
 		carPark.setHeavyVehicleRate(10);
 		carPark.setLot_available(199);
-		carPark.setLot_type('g');
 		carPark.setMotorcycleRate(6);
-		carPark.setPostalCode(566663);
-		carPark.setX(123.12);
-		carPark.setY(123.4);
+		carPark.setX(2);
+		carPark.setY(2);
 		}
 	
 	@Test
@@ -59,9 +57,7 @@ public class CarParkTest {
 		carPark2.setCarRate(7.3);
 		carPark2.setHeavyVehicleRate(10);
 		carPark2.setLot_available(199);
-		carPark2.setLot_type('g');
 		carPark2.setMotorcycleRate(6);
-		carPark2.setPostalCode(123213);
 		carPark2.setX(123.12);
 		carPark2.setY(123.4);
 		
@@ -75,25 +71,31 @@ public class CarParkTest {
    }
    
    @Test
-   public void getCarParkByNameTest() {
+   public void getCarParkByAddress() {
 	   
-	   when(repository.getCarParksByCarParkName("CarPark Name")).thenReturn(Stream.of(carPark).collect(Collectors.toList()));
-	   assertThat(service.getCarParksByCarParkName("CarPark Name").size()).isEqualTo(1);
+	   when(repository.getCarParksByAddressContaining("CarPark Address")).thenReturn(Stream.of(carPark).collect(Collectors.toList()));
+	   assertThat(service.getCarParksByAddress("CarPark Address").size()).isEqualTo(1);
+   }
+   
+   @Test
+   public void getNearbyCarParksByCoordTest() {
+	   when(repository.getNearbyCarParksByCoord(2, 2, 2)).thenReturn(Stream.of(carPark).collect(Collectors.toList()));
+	   assertThat(service.getNearbyCarParksByCoord(2 , 2 ,2 ).size()).isEqualTo(1);
    }
    @Test
-   public void saveUserTest() {
+   public void saveCarParkTest() {
 	   when(repository.save(carPark)).thenReturn(carPark);
 	   assertThat(service.saveCarPark(carPark)).isEqualTo(carPark);
    }
    @Test
-   public void deleteUserTest() {
+   public void deleteCarParkTest() {
 	   when(repository.findById(1)).thenReturn(Optional.of(carPark));
 	   service.deleteCarPark(1);
 	  verify(repository , times(1)).deleteById(1);
    }
    
    @Test
-   public void updateUserTest() {
+   public void updateCarParkTest() {
 	   when(repository.findById(1)).thenReturn(Optional.of(carPark));
 	   when(repository.save(carPark)).thenReturn(carPark);
 	   carPark.setLot_available(180);

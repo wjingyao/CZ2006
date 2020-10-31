@@ -16,13 +16,11 @@ public class CarPark {
 	@Column(name = "carParkName")
 	private String carParkName;
 	private int total_lot;
-	private char lot_type;
 	private int lot_available;
 	private double carRate;
 	private double motorcycleRate;
 	private double heavyVehicleRate;
-	private int postalCode;
-	private String Address;
+	private String address;
 	private double x;
 	private double y;
 
@@ -53,15 +51,6 @@ public class CarPark {
 
 	public void setTotal_lot(int total_lot) {
 		this.total_lot = total_lot;
-	}
-
-	
-	public char getLot_type() {
-		return lot_type;
-	}
-
-	public void setLot_type(char lot_type) {
-		this.lot_type = lot_type;
 	}
 
 	public int getLot_available() {
@@ -96,20 +85,12 @@ public class CarPark {
 		this.heavyVehicleRate = heavyVehicleRate;
 	}
 
-	public int getPostalCode() {
-		return postalCode;
-	}
-
-	public void setPostalCode(int postalCode) {
-		this.postalCode = postalCode;
-	}
-
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 
 	public double getX() {

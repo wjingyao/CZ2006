@@ -19,8 +19,8 @@ public class CarParkController {
 	private CarParkService service;
 	
 	
-	@GetMapping("api/carParks/postalCode")
-	public List<CarPark> searchCarparkByPostalCode(@RequestParam int PostalCode){
+	@GetMapping("api/carParks/address")
+	public List<CarPark> searchCarparkByAddress(@RequestParam String address){
 		//return placeholder
 		return service.getCarParks();
 	}

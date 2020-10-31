@@ -13,7 +13,7 @@ public interface CarParkRepository  extends JpaRepository<CarPark,Integer>{
 		
 	//CarPark getCarParksByPostalCode(int postalCode);
 	
-	List<CarPark> getCarParksByCarParkName(String carParkName);
+	List<CarPark> getCarParksByAddressContaining(String address);
 	
 	String HAVERSINE_FORMULA = "(6371 * acos(cos(radians(:x)) * cos(radians(c.x)) *" +
 	        " cos(radians(c.y) - radians(:y)) + sin(radians(:x)) * sin(radians(c.x))))";

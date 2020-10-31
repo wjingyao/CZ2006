@@ -71,9 +71,7 @@ public class BookingTest {
 		carPark.setCarRate(7.3);
 		carPark.setHeavyVehicleRate(10);
 		carPark.setLot_available(199);
-		carPark.setLot_type('g');
 		carPark.setMotorcycleRate(6);
-		carPark.setPostalCode(566663);
 		carPark.setX(123.12);
 		carPark.setY(123.4);
 		
