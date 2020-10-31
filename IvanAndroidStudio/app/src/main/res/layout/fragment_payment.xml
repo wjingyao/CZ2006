@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/paymentRecyclerView"
@@ -19,26 +21,45 @@
         android:orientation="vertical"
         android:background="@color/white">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:layout_marginBottom="5dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add new payment"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
+
         <EditText
             android:id="@+id/add_CardNo"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:inputType="number"
             android:layout_gravity="center_horizontal"
-            android:hint="Card Number" />
+            android:hint="(xxxx-xxxx-xxxx-xxxx)" />
 
         <EditText
             android:id="@+id/add_CCV"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:layout_gravity="center_horizontal"
-            android:hint="CCV" />
+            android:hint="CCV (***)" />
 
         <EditText
             android:id="@+id/add_Expiry"
             android:layout_width="300dp"
+            android:inputType="number"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:hint="Expiry Date" />
+            android:hint="Expiry Date (MMYY)" />
 
         <Button
             android:id="@+id/addPaymentBtn"
@@ -46,6 +67,8 @@
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="20dp"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/teal_200"
             android:text="Add Payment" />
 
     </LinearLayout>

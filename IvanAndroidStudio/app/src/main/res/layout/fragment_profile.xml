@@ -18,6 +18,8 @@
                 android:id="@+id/text_Profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
                 android:layout_gravity="center_horizontal"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:text="Change Password"
@@ -33,9 +35,9 @@
                     android:id="@+id/text_Profile_Password"
                     android:layout_width="110dp"
                     android:layout_height="match_parent"
-
                     android:layout_marginLeft="20dp"
                     android:layout_marginBottom="0dp"
+                    android:textColor="@color/black"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:text="New Password:"
                     android:textSize="19sp" />
@@ -45,6 +47,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:hint="New Password"
                     android:ems="10"
                     android:inputType="textPassword" />
 
@@ -60,7 +63,7 @@
                     android:id="@+id/text_Profile_cPassword"
                     android:layout_width="110dp"
                     android:layout_height="match_parent"
-
+                    android:textColor="@color/black"
                     android:layout_marginLeft="20dp"
                     android:layout_marginBottom="0dp"
                     android:fontFamily="sans-serif-condensed-medium"
@@ -71,6 +74,7 @@
                     android:id="@+id/profile_cPassword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:hint="Confirmed Password"
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="textPassword" />
@@ -85,6 +89,9 @@
                 android:layout_marginTop="100dp"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:text="Update"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/teal_200"
+                android:elevation="10dp"
                 android:textSize="24sp" />
 
         </LinearLayout>

@@ -39,11 +39,9 @@ public class vehicle_card_adapter extends RecyclerView.Adapter<vehicle_card_adap
     public class vehicle_card_holder extends RecyclerView.ViewHolder {
         ImageView mImageView;
         TextView mVehiclePlate;
-        TextView tVehicleId;
         Button deleteBtn;
         public vehicle_card_holder(View itemView) {
             super(itemView);
-            tVehicleId = itemView.findViewById(R.id.card_VehicleId);
             mImageView = itemView.findViewById(R.id.card_VehicleLogo);
             mVehiclePlate = itemView.findViewById(R.id.card_VehiclePlate);
             deleteBtn = itemView.findViewById(R.id.card_VehicleButton);
@@ -113,7 +111,6 @@ public class vehicle_card_adapter extends RecyclerView.Adapter<vehicle_card_adap
     public void onBindViewHolder(@NonNull vehicle_card_holder holder, int position) {
         vehicle_item currentItem = mVehicleList.get(position);
 
-        holder.tVehicleId.setText(String.valueOf(currentItem.getVehicleId()));
         holder.mImageView.setImageResource(currentItem.getmImageResource());
         holder.mVehiclePlate.setText(currentItem.getMvehiclePlateNo());
 
