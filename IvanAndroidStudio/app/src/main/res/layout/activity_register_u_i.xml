@@ -118,7 +118,7 @@
                 android:ems="10"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:hint="Vehicle Plate Number:"
-                android:inputType="textNoSuggestions"
+                android:inputType="textCapCharacters"
                 android:textColorHint="@android:color/darker_gray"
                 android:textSize="20sp" />
 
@@ -135,51 +135,50 @@
 
             <RadioGroup
                 android:id="@+id/radio_selectVehicle"
-                android:layout_width="300dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/radio_Car"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:button="@drawable/ic_car_icon" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:drawableTop="@drawable/ic_car_icon"
+
+                    />
 
                 <RadioButton
                     android:id="@+id/radio_Motorbike"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_weight="1"
-                    android:button="@drawable/ic_motorbike_icon" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:drawableTop="@drawable/ic_motorcycle_icon"
+                    />
 
                 <RadioButton
                     android:id="@+id/radio_Lorry"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_weight="1"
-                    android:button="@drawable/ic_lorry_icon" />
+                    android:paddingRight="10dp"
+                    android:drawableTop="@drawable/ic_lorry_icon"
+                    />
 
             </RadioGroup>
 
-            <CheckBox
-                android:id="@+id/register_tandc"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:text="Terms and Conditions" />
+
 
             <Button
                 android:id="@+id/register_Button"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="120dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:text="Register"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/teal_200"
                 android:textSize="24sp" />
 
         </LinearLayout>

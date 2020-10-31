@@ -45,7 +45,7 @@ public class loginUI extends AppCompatActivity {
     TextView lNewUser;
     Button lButton;
 
-    //FirebaseAuth fAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +59,6 @@ public class loginUI extends AppCompatActivity {
         lButton = findViewById(R.id.login_Button);
 
 
-        //instantiate fire authenthecation
-        //fAuth = FirebaseAuth.getInstance();
-
         lButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +69,7 @@ public class loginUI extends AppCompatActivity {
 
                 //check if email is enter or not
                 if (TextUtils.isEmpty(user)) {
-                    lUser.setError("Email is Required");
+                    lUser.setError("Username is Required");
                     return;
                 }
 
@@ -87,20 +84,6 @@ public class loginUI extends AppCompatActivity {
                     lPassword.setError("Password Must be >= 6 characters");
                     return;
                 }
-
-                //authenticate the user
-                //fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                // @Override
-                // public void onComplete(@NonNull Task<AuthResult> task) {
-                //     if(task.isSuccessful()){
-                //         Toast.makeText(loginUI.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-                //         startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                //      }
-                //      else {
-                //          Toast.makeText(loginUI.this, "Error !" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                //    }
-                //  }
-                //  });
 
                 MediaType JSON = MediaType.get("application/json; charset=utf-8");  //dont change this part
                 JSONObject dataBody = new JSONObject();                             //dont change this part

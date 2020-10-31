@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/vehicleRecyclerView"
@@ -20,12 +22,30 @@
         android:orientation="vertical"
         android:background="@color/white">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:layout_marginBottom="5dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add new vehicle"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            />
+
         <EditText
             android:id="@+id/addVehicle"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:hint="Vehicle Plate Number" />
+            android:layout_marginTop="10dp"
+            android:inputType="textCapCharacters"
+            android:hint="Enter your vehicle plate number..." />
 
         <RadioGroup
             android:id="@+id/radio_addVehicle"
@@ -36,25 +56,24 @@
 
             <RadioButton
                 android:id="@+id/radio_aCar"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:button="@drawable/ic_car_icon" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:drawableTop="@drawable/ic_car_icon" />
 
             <RadioButton
                 android:id="@+id/radio_aMotorbike"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="50dp"
-                android:layout_weight="1"
-                android:button="@drawable/ic_motorbike_icon" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:drawableTop="@drawable/ic_motorcycle_icon" />
 
             <RadioButton
                 android:id="@+id/radio_aLorry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_weight="1"
-                android:button="@drawable/ic_lorry_icon" />
+                android:paddingRight="10dp"
+                android:drawableTop="@drawable/ic_lorry_icon"/>
 
         </RadioGroup>
 
@@ -64,6 +83,8 @@
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             android:text="Add Vehicle"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/teal_200"
             android:layout_marginBottom="30dp"
             />
     </LinearLayout>

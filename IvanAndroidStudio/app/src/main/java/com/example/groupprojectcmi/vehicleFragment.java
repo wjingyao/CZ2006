@@ -198,7 +198,7 @@ public class vehicleFragment extends Fragment {
                                 }
                                 else if (compareType.equals("Motorbike"))
                                 {
-                                    cardList.add(new vehicle_item(id,R.drawable.ic_motorbike_icon,plateNum));
+                                    cardList.add(new vehicle_item(id,R.drawable.ic_motorcycle_icon,plateNum));
                                 }
                                 else
                                 {
