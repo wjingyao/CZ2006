@@ -97,7 +97,7 @@ public class UserTest {
    public void updateUserTest() {
 	   when(repository.findById(1)).thenReturn(Optional.of(user));
 	   when(repository.save(user)).thenReturn(user);
-	   user.setFirstName("testtest");
-	   assertThat(service.updateUser(user).getFirstName()).isEqualTo("testtest");
+	   user.setPassword("testtest");
+	   assertThat(service.updateUser(user).getPassword()).isEqualTo("testtest");
    }
 }
