@@ -7,5 +7,7 @@ public class api {
 
     public static String token = "";
 
+    public static String user = "";
+
     public static int id = -1;
 }

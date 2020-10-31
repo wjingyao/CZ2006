@@ -139,7 +139,6 @@ public class loginUI extends AppCompatActivity {
                                 api.token = Jobject.getString("token");
                                 api.id = Jobject.getJSONObject("user").getInt("id");
                                 Log.d("api id", String.valueOf(api.id));
-
                                 Log.d("api token", api.token);
                                 //Log.d("api id", api.id);
 
@@ -150,6 +149,7 @@ public class loginUI extends AppCompatActivity {
                                         Toast.makeText(loginUI.this, "login successfully", Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(getBaseContext(), MainActivity.class);
                                         intent.putExtra("SESSION_ID", user);
+                                        api.user = user;
                                         startActivity(intent);
                                     }
                                 });

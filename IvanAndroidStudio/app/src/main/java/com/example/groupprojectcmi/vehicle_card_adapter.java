@@ -47,6 +47,7 @@ public class vehicle_card_adapter extends RecyclerView.Adapter<vehicle_card_adap
             mImageView = itemView.findViewById(R.id.card_VehicleLogo);
             mVehiclePlate = itemView.findViewById(R.id.card_VehiclePlate);
             deleteBtn = itemView.findViewById(R.id.card_VehicleButton);
+
             deleteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -83,7 +84,7 @@ public class vehicle_card_adapter extends RecyclerView.Adapter<vehicle_card_adap
                             }
                             else
                             {
-                                Log.d("Something", "Fail");
+                                Log.d("Delete", "Fail");
                             }
                         }
                     });
