@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -199,31 +198,8 @@ public class homeFragment extends Fragment implements OnMapReadyCallback {
                 for(JSONObject object : carParkList){
                     try {
                         if(object.getInt("id") == position){
-                            String address = object.getString("address");
-                            String carRate = String.valueOf(object.getDouble("carRate"));
-                            String lorryRate = String.valueOf(object.getDouble("heavyVehicleRate"));
-                            String motorRate = String.valueOf(object.getDouble("motorcycleRate"));
-                            int total = object.getInt("total_lot");
-                            int avail = object.getInt("lot_available");
-                            String name = object.getString("carParkName");
-                            Log.d("Address", address );
-                            Log.d("CarPark Name", name);
-                            Log.d("CarRate" , carRate);
-                            Log.d("lorryRate" , lorryRate);
-                            Log.d("motorRate" , motorRate);
-                            Log.d("Total Lot", String.valueOf(total));
-                            Log.d("Available Lot", String.valueOf(avail));
-
-                            Intent i = new Intent(getActivity(), BookActivity.class);
-                            i.putExtra("id", position);
-                            i.putExtra("name", name);
-                            i.putExtra("address", address);
-                            i.putExtra("carRate", carRate);
-                            i.putExtra("lorryRate", lorryRate);
-                            i.putExtra("motorRate", motorRate);
-                            i.putExtra("total", total);
-                            i.putExtra("avail", avail);
-                            startActivity(i);
+                            Log.d("Address",object.getString("address") );
+                            Log.d("CarparkRate" , String.valueOf(object.getDouble("carRate")));
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

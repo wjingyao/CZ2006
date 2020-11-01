@@ -96,14 +96,13 @@ public class mybookingFragment extends Fragment {
                                 Log.d("carpark", bkcarpark);
                                 String plateNum = obj.getJSONObject("vehicle").getString("plateNum");
                                 Log.d("platenum", plateNum);
-                                String address = obj.getJSONObject("carPark").getString("address");
                                 if (active.equals("true")) {
-                                   cardList.add(new booking_item(id,"Current",dateTime,plateNum,bkcarpark,"@"+address));
+                                   cardList.add(new booking_item(id,"Current",dateTime,plateNum,bkcarpark));
                                    System.out.println("current");
                                 }
                                 else
                                 {
-                                    cardList.add(new booking_item(id,"Completed",dateTime,plateNum,bkcarpark,"@"+address));
+                                    cardList.add(new booking_item(id,"Completed",dateTime,plateNum,bkcarpark));
                                     System.out.println("completed");
                                 }
 

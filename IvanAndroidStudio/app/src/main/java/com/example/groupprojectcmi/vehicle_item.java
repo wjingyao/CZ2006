@@ -26,11 +26,4 @@ public class vehicle_item {
     }
 
     public void setMvehiclePlateNo(String vehiclePlateNo) { this.mvehiclePlateNo = vehiclePlateNo; }
-
-
-    @Override
-    public String toString() {
-        return mvehiclePlateNo;
-    }
 }
-

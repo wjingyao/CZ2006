@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.groupprojectcmi">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
     <application
@@ -14,45 +13,43 @@
         android:label="CMI"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.GroupProjectCMI"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".BookActivity"
-            tools:ignore="Instantiatable"></activity>
+        android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.GroupProjectCMI">
+
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyBX4LwqdbwGw-n6MQ4i_BT8ImC6kLl0tZs" />
-
         <activity
             android:name=".loginUI"
-            android:theme="@style/Theme.GroupProjectCMI.NoActionBar"
-            tools:ignore="Instantiatable">
+            android:theme="@style/Theme.GroupProjectCMI.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".registerUI"
-            android:theme="@style/Theme.GroupProjectCMI.NoActionBar"
-            tools:ignore="Instantiatable">
+            android:theme="@style/Theme.GroupProjectCMI.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.GroupProjectCMI.NoActionBar"
-            tools:ignore="Instantiatable">
+            android:theme="@style/Theme.GroupProjectCMI.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

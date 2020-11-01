@@ -22,9 +22,4 @@ public class payment_item {
     public String getExpiryDate() { return expiryDate; }
 
     public void setExpiryDate(String iexpiryDate) { this.expiryDate = iexpiryDate; }
-
-    @Override
-    public String toString() {
-        return paymentCardNo;
-    }
 }
