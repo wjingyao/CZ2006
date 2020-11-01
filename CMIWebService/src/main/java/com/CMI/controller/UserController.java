@@ -24,9 +24,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.CMI.dtoView.UserView;
 import com.CMI.entity.User;
 import com.CMI.entity.Vehicle;
-import com.CMI.security.JwtUtil;
 import com.CMI.service.MyUserDetailsService;
 import com.CMI.service.UserService;
+import com.CMI.util.JwtUtil;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
@@ -76,7 +76,6 @@ public class UserController {
 			ret.put("token", jwt);
 		}
 		
-		User user1 = service.getUserByUsername(user.getUsername());
 
 		return ret;
 	
