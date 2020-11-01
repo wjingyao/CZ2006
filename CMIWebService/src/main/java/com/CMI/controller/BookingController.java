@@ -37,20 +37,35 @@ public class BookingController {
 	private CarParkService carParkService;
 	
 	@PostMapping("api/bookings/create")
-	public Booking createBooking(@RequestBody Booking booking ,  @RequestParam int userId ,  @RequestParam int vehicleId , @RequestParam int carParkId) {
-		User user = userService.getUserById(userId);
-		Vehicle vehicle = vehicleService.getVehicleById(vehicleId);
-		CarPark carPark = carParkService.getCarParkById(carParkId);
-		booking.setUser(user);
-		booking.setVehicle(vehicle);
-		booking.setCarPark(carPark);
-		return service.saveBooking(booking);
-	}
+    public Booking createBooking(@RequestBody Booking booking ,  @RequestParam int userId ,  @RequestParam int vehicleId , @RequestParam int carParkId) {
+        User user = userService.getUserById(userId);
+        Vehicle vehicle = vehicleService.getVehicleById(vehicleId);
+        CarPark carPark = carParkService.getCarParkById(carParkId);
+        booking.setUser(user);
+        booking.setVehicle(vehicle);
+        booking.setCarPark(carPark);
+        booking.setActive(true);
+        if(carPark.getLot_available()!= 0) {
+        carPark.setLot_available(carPark.getLot_available()-1);
+        carParkService.updateCarPark(carPark);
+        }
+        return service.saveBooking(booking);
+    }
 	
 	@PutMapping("api/bookings/{id}")
-	public Booking updateBooking(@PathVariable int id , @RequestBody Booking booking) {
-		return service.updateBooking(booking);
-	}
+    public Booking updateBooking(@PathVariable int id , @RequestBody Booking booking) {
+        Booking oldBooking = service.getBookingById(id);
+        booking.setId(oldBooking.getId());
+        if(!booking.isActive()) {
+            CarPark carpark = oldBooking.getCarPark();
+
+            carpark.setLot_available((carpark.getLot_available()+1));
+            if(carpark.getLot_available()<carpark.getTotal_lot()) {
+                carParkService.updateCarPark(carpark);
+            }
+        }
+        return service.updateBooking(booking);
+    }
 	@DeleteMapping("api/bookings/{id}")
 	public String deleteUser(@PathVariable int id) {
 		return service.deleteBooking(id);

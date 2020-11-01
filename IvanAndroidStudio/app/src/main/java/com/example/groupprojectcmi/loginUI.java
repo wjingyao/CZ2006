@@ -131,7 +131,6 @@ public class loginUI extends AppCompatActivity {
                                     public void run() {
                                         Toast.makeText(loginUI.this, "login successfully", Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                                        intent.putExtra("SESSION_ID", user);
                                         api.user = user;
                                         startActivity(intent);
                                     }

@@ -47,11 +47,10 @@ public class CarParkService {
 		return "delete Car Park successfully";
 	}
 	public CarPark updateCarPark(CarPark carPark) {
-		CarPark oldCarPark = repository.findById(carPark.getId()).orElse(null);
-		oldCarPark.setHeavyVehicleRate(carPark.getHeavyVehicleRate());
-		oldCarPark.setLot_available(carPark.getLot_available());
-		oldCarPark.setTotal_lot(carPark.getTotal_lot());
-		return repository.save(oldCarPark);
-	}
+        CarPark oldCarPark = repository.findById(carPark.getId()).orElse(null);
+        oldCarPark.setLot_available(carPark.getLot_available());
+        oldCarPark.setTotal_lot(carPark.getTotal_lot());
+        return repository.save(oldCarPark);
+    }
 	
 }

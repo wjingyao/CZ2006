@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.groupprojectcmi">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -16,8 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GroupProjectCMI"
         android:usesCleartextTraffic="true">
-        <activity android:name=".BookActivity"
-            tools:ignore="Instantiatable"></activity>
+        <activity android:name=".BookActivity"></activity>
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
@@ -25,8 +23,7 @@
 
         <activity
             android:name=".loginUI"
-            android:theme="@style/Theme.GroupProjectCMI.NoActionBar"
-            tools:ignore="Instantiatable">
+            android:theme="@style/Theme.GroupProjectCMI.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,8 +32,7 @@
         </activity>
         <activity
             android:name=".registerUI"
-            android:theme="@style/Theme.GroupProjectCMI.NoActionBar"
-            tools:ignore="Instantiatable">
+            android:theme="@style/Theme.GroupProjectCMI.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -45,8 +41,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.GroupProjectCMI.NoActionBar"
-            tools:ignore="Instantiatable">
+            android:theme="@style/Theme.GroupProjectCMI.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

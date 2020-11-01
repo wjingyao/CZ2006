@@ -3,6 +3,7 @@ package com.example.groupprojectcmi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -90,6 +91,13 @@ public class BookActivity extends AppCompatActivity {
         if (avail == 0)
         {
             bkBtn.setVisibility(View.GONE);
+        }
+
+        if (api.size > 0)
+        {
+            bkBtn.setEnabled(false);
+            bkBtn.setBackgroundColor(Color.parseColor("#E8E8E8"));
+            bkBtn.setTextColor(Color.parseColor("#D3D3D3"));
         }
 
         backbtn.setOnClickListener(new View.OnClickListener() {
@@ -219,7 +227,6 @@ public class BookActivity extends AppCompatActivity {
 
                 int vehicle_id = vitem.getVehicleId();
                 int payment_id = pitem.getPaymentId();
-                Date currentTime = Calendar.getInstance().getTime();
 
 
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.00");
@@ -232,7 +239,7 @@ public class BookActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    MediaType JSON = MediaType.get("application/json; charset=utf-8");  //dont change this part
+                    MediaType JSON = MediaType.get("application/json; charset=utf-8");  //do    nt change this part
                     JSONObject dataBody = new JSONObject();                             //dont change this part
                     OkHttpClient client = new OkHttpClient();
 

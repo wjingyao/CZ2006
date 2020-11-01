@@ -10,4 +10,6 @@ public class api {
     public static String user = "";
 
     public static int id = -1;
+
+    public static int size = -1;
 }

@@ -34,12 +34,8 @@ public class BookingService {
 		return "delete Booking successfully";
 	}
 	public Booking updateBooking(Booking booking) {
-		Booking oldBooking = repository.findById(booking.getId()).orElse(null);
-		oldBooking.setActive(booking.isActive());
-		oldBooking.setBookingDateTime(booking.getBookingDateTime());
-		oldBooking.setCarPark(booking.getCarPark());
-		oldBooking.setUser(booking.getUser());
-		oldBooking.setVehicle(booking.getVehicle());
-		return repository.save(oldBooking);
-	}
+        Booking oldBooking = repository.findById(booking.getId()).orElse(null);
+        oldBooking.setActive(booking.isActive());
+        return repository.save(oldBooking);
+    }
 }

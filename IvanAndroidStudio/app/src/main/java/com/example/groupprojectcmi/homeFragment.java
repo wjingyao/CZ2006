@@ -66,6 +66,7 @@ public class homeFragment extends Fragment implements OnMapReadyCallback {
     GoogleMap mGoogleMap;
     private FusedLocationProviderClient fusedLocationClient;
     List<JSONObject> carParkList;
+    List<booking_item> cardList;
     Location mLastLocation;
     private static final int REQUEST_LOCATION_PERMISSION = 1;
 
@@ -77,6 +78,7 @@ public class homeFragment extends Fragment implements OnMapReadyCallback {
         mMapView = (MapView) rootView.findViewById(R.id.google_map);
         mMapView.onCreate(savedInstanceState);
 
+        trackBook();
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
         mMapView.getMapAsync(this);
         return rootView;
@@ -248,6 +250,64 @@ public class homeFragment extends Fragment implements OnMapReadyCallback {
         }
     }
 
+    private void trackBook() {
+        cardList = new ArrayList<>();
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(api.baseUrl + "bookings/?username=" + api.user)
+                .addHeader("Authorization", "Bearer " + api.token)
+                .get()
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    String myResponse = response.body().string();
+                    System.out.println(myResponse);
+                    try {
+                        JSONArray jArr = new JSONArray(myResponse);
+                        for (int i = jArr.length()-1; i >= 0 ; i--)
+                        {
+                            JSONObject obj = new JSONObject();
+                            obj = jArr.optJSONObject(i);
+                            int id = obj.getInt("id");
+                            Log.d("id", String.valueOf(id));
+                            String dateTime = obj.getString("bookingDateTime");
+                            Log.d("Datetime", dateTime);
+                            dateTime = dateTime.replace("T"," ");
+                            String active = String.valueOf(obj.getBoolean("active"));
+                            Log.d("active", String.valueOf(active));
+                            String bkcarpark = obj.getJSONObject("carPark").getString("carParkName");
+                            Log.d("carpark", bkcarpark);
+                            String plateNum = obj.getJSONObject("vehicle").getString("plateNum");
+                            Log.d("platenum", plateNum);
+                            String address = obj.getJSONObject("carPark").getString("address");
+                            if (active.equals("true")) {
+                                cardList.add(new booking_item(id,"Current",dateTime,plateNum,bkcarpark,"@"+address));
+                                System.out.println("current");
+                            }
+
+                        }
+
+                            int size = cardList.size();
+                        Log.d("Size of bookings", String.valueOf(size));
+                        api.size = size;
+
+                    }
+                    catch (JSONException e)
+                    {
+                    }
+                }
+            }
+
+        });
+    }
 
 
 }

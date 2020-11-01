@@ -1,5 +1,6 @@
 package com.example.groupprojectcmi;
 
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
@@ -35,7 +36,7 @@ public class booking_card_adapter extends RecyclerView.Adapter<booking_card_adap
 
     public class booking_card_holder extends RecyclerView.ViewHolder {
         TextView active, vehicle, carPark, dateTime, address;
-        Button deleteBtn;
+        Button deleteBtn, cfmBtn;
         public booking_card_holder(View itemView){
             super(itemView);
             active = itemView.findViewById(R.id.card_BookingActive);
@@ -44,6 +45,56 @@ public class booking_card_adapter extends RecyclerView.Adapter<booking_card_adap
             dateTime = itemView.findViewById(R.id.card_BookingDateTime);
             address = itemView.findViewById(R.id.card_Address);
             deleteBtn = itemView.findViewById(R.id.btn_dBooking);
+            cfmBtn = itemView.findViewById(R.id.btn_dConfirm);
+
+
+            cfmBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int bookingid = mBookingList.get(getAdapterPosition()).getBookingId();
+                    MediaType JSON = MediaType.get("application/json; charset=utf-8");
+                    JSONObject dataBody = new JSONObject();
+                    OkHttpClient client = new OkHttpClient();
+
+                    try {
+                        dataBody.put("active", false);
+                    }
+                    catch (JSONException e) {
+                        Log.d("OKHTTP3", "JSON Exception");
+                        e.printStackTrace();
+                    }
+
+                    RequestBody body = RequestBody.create(dataBody.toString(),JSON);  //only req change
+                    Log.d("OKHTTP3", "RequestBody Created.");
+                    Request request = new Request.Builder()
+                            .url(api.baseUrl + "bookings/"+bookingid)        //cthis is the url we can change based on different UI
+                            .addHeader("Authorization", "Bearer " + api.token)
+                            .put(body)                                 //depends on where to get or post database, we use that word respectively
+                            .build();
+
+                    Log.d("token",request.toString());
+                    client.newCall(request).enqueue(new Callback() {
+                        @Override
+                        public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        @Override
+                        public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+
+                            if (response.isSuccessful()) {
+                                String myResponse = response.body().string();
+                                System.out.println(myResponse);
+                                System.out.println("YOYOYOYOYOYOYO");
+
+                            }
+                        }
+                    });
+
+                }
+            });
+
+
 
             deleteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -111,6 +162,7 @@ public class booking_card_adapter extends RecyclerView.Adapter<booking_card_adap
         if (currentItem.getBookingActive().equals("Completed"))
         {
           holder.deleteBtn.setVisibility(View.GONE);
+          holder.cfmBtn.setVisibility(View.GONE);
         }
 
     }

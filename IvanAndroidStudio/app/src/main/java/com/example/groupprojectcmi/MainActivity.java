@@ -22,7 +22,7 @@ import android.view.Window;
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    String sessionId = "ee";
+
     private DrawerLayout drawer;
     TextView txt_Session;
 
@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        sessionId = getIntent().getStringExtra("SESSION_ID");
 
 
 
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         txt_Session = (TextView)navigationView.getHeaderView(0).findViewById(R.id.text_sessionId);
-        txt_Session.setText(sessionId);
+        txt_Session.setText(api.user);
 
         //this code is to show my intended first page to the user when the app in turn on
         if (savedInstanceState == null) {
@@ -102,9 +101,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_logout:
                 FirebaseAuth.getInstance().signOut(); ///Loutout
-                sessionId = "";
+                api.user="";
                 api.token = "";
-                api.id = 0;
+                api.id = -1;
+                api.size=-1;
                 startActivity(new Intent(getApplicationContext(),loginUI.class));
 
         }
