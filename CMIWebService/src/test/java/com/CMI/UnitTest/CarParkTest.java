@@ -101,11 +101,4 @@ public class CarParkTest {
 	   carPark.setLot_available(180);
 	   assertThat(service.updateCarPark(carPark).getLot_available()).isEqualTo(180);
    }
-   
-   @Test
-   public void getCarParkByCarParkNameTest() {
-	   when(repository.getCarParkByCarParkName("CarPark Name")).thenReturn(carPark);
-	  assertThat(service.getCarParkByCarParkName("CarPark Name")).isEqualTo(carPark);
-	   
-   }
 }

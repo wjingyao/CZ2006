@@ -44,25 +44,11 @@ public class BookingController {
 		booking.setUser(user);
 		booking.setVehicle(vehicle);
 		booking.setCarPark(carPark);
-		booking.setActive(true);
-		if(carPark.getLot_available()!= 0) {
-		carPark.setLot_available(carPark.getLot_available()-1);
-		carParkService.updateCarPark(carPark);
-		}
 		return service.saveBooking(booking);
 	}
 	
 	@PutMapping("api/bookings/{id}")
 	public Booking updateBooking(@PathVariable int id , @RequestBody Booking booking) {
-		Booking oldBooking = service.getBookingById(id);
-		if(!booking.isActive()) {
-			CarPark carpark = oldBooking.getCarPark();
-			
-			carpark.setLot_available((carpark.getLot_available()+1));
-			if(carpark.getLot_available()<carpark.getTotal_lot()) {
-				carParkService.updateCarPark(carpark);
-			}
-		}
 		return service.updateBooking(booking);
 	}
 	@DeleteMapping("api/bookings/{id}")
