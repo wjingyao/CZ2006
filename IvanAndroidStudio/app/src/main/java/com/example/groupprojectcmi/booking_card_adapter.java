@@ -34,7 +34,7 @@ public class booking_card_adapter extends RecyclerView.Adapter<booking_card_adap
     List<booking_item> mBookingList;
 
     public class booking_card_holder extends RecyclerView.ViewHolder {
-        TextView active, vehicle, carPark, dateTime;
+        TextView active, vehicle, carPark, dateTime, address;
         Button deleteBtn;
         public booking_card_holder(View itemView){
             super(itemView);
@@ -42,6 +42,7 @@ public class booking_card_adapter extends RecyclerView.Adapter<booking_card_adap
             vehicle = itemView.findViewById(R.id.card_BookingVehicle);
             carPark = itemView.findViewById(R.id.card_Carpark);
             dateTime = itemView.findViewById(R.id.card_BookingDateTime);
+            address = itemView.findViewById(R.id.card_Address);
             deleteBtn = itemView.findViewById(R.id.btn_dBooking);
 
             deleteBtn.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +107,7 @@ public class booking_card_adapter extends RecyclerView.Adapter<booking_card_adap
         holder.vehicle.setText(currentItem.getVehiclePlate());
         holder.carPark.setText(currentItem.getCarParkName());
         holder.dateTime.setText(currentItem.getBookingDateTime());
+        holder.address.setText(currentItem.getAddress());
         if (currentItem.getBookingActive().equals("Completed"))
         {
           holder.deleteBtn.setVisibility(View.GONE);

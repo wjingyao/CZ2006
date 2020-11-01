@@ -6,13 +6,15 @@ public class booking_item {
     String bookingDateTime;
     String vehiclePlate;
     String carParkName;
+    String address;
 
-    public booking_item(int ibookingId, String ibookingActive, String ibookingDateTime, String ivehiclePlate, String icarParkName) {
+    public booking_item(int ibookingId, String ibookingActive, String ibookingDateTime, String ivehiclePlate, String icarParkName, String iaddress) {
         bookingId = ibookingId;
         bookingActive = ibookingActive;
         bookingDateTime = ibookingDateTime;
         vehiclePlate = ivehiclePlate;
         carParkName = icarParkName;
+        address = iaddress;
     }
 
     public int getBookingId() { return bookingId; }
@@ -34,4 +36,8 @@ public class booking_item {
     public String getCarParkName() { return carParkName; }
 
     public void setCarParkName(String icarParkName) { carParkName = icarParkName; }
+
+    public String getAddress() { return address; }
+
+    public void setAddress(String iaddress) { address = iaddress; }
 }
