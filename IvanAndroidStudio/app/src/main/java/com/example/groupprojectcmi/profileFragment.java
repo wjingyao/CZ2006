@@ -125,8 +125,8 @@ public class profileFragment extends Fragment {
                 Log.d("OKHTTP3", "RequestBody created.");
                 Request request = new Request.Builder()
                         .url(api.baseUrl + "users/" + api.id)
-                        .put(body)
                         .addHeader("Authorization", "Bearer " + api.token)
+                        .put(body)
                         .build();
                 client.newCall(request).enqueue(new Callback() {
                     @Override
@@ -137,14 +137,13 @@ public class profileFragment extends Fragment {
                     @Override
                     public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                         if (response.isSuccessful()) {
+                            System.out.print("DONE");
                             String myResponse = response.body().string();
                             System.out.println(myResponse);
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
                                     Toast.makeText(getActivity(), "Password changed", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getActivity(), profileFragment.class);
-                                    startActivity(intent);
                                 }
                             });
 
