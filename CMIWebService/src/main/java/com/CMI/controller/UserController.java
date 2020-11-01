@@ -99,6 +99,7 @@ public class UserController {
 	
 	@PutMapping("api/users/{id}")
 	public User updateUser(@PathVariable int id ,@RequestBody User user) {
+		user.setId(id);
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		return service.updateUser(user);
 	}
