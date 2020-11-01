@@ -11,4 +11,6 @@ import com.CMI.entity.User;
 public interface BookingRepository  extends JpaRepository<Booking,Integer>{
 		
 	List<Booking> getBookingsByUser(User user);
+	
+
 }
