@@ -176,45 +176,53 @@ public class vehicleFragment extends Fragment {
                     String myResponse = response.body().string();
                     System.out.println(myResponse);
                     try {
-                        JSONArray jArr = new JSONArray(myResponse);
-                            for (int i = 0; i < jArr.length(); i++)
-                            {
-                                JSONObject obj = new JSONObject();
-                                obj = jArr.optJSONObject(i);
-                                Log.d("Jarr", obj.toString());
-                                int id = obj.getInt("id");
-                                Log.d("id", String.valueOf(id));
-                                String plateNum = obj.getString("plateNum");
-                                Log.d("platenum", plateNum);
-                                String compareType = obj.getString("typeOfVehicle");
-                                Log.d("typeofvehicle", compareType);
-                                if (compareType.equals("Lorry"))
-                                {
-                                    cardList.add(new vehicle_item(id,R.drawable.ic_lorry_icon,plateNum));
-                                }
-                                else if (compareType.equals("Motorbike"))
-                                {
-                                    cardList.add(new vehicle_item(id,R.drawable.ic_motorcycle_icon,plateNum));
-                                }
-                                else
-                                {
-                                    cardList.add(new vehicle_item(id,R.drawable.ic_car_icon,plateNum));
-                                }
-
-                            }
-                            if(cardList.size() !=0){
-                                //if(mRecyclerView.getAdapter() == null){
-                                    vehicle_card_adapter adapter = new vehicle_card_adapter(cardList);
-                                    mRecyclerView.setAdapter(adapter);
-                                //}else{
-                                 //   vehicle_card_adapter adapter = new vehicle_card_adapter(cardList);
-                                 //   mRecyclerView.setAdapter(adapter);
-                                    //       adapter.notifyDataSetChanged();
-                                }
+                        JSONArray jArr = null;
+                        try {
+                            jArr = new JSONArray(myResponse);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        for (int i = 0; i < jArr.length(); i++) {
+                            JSONObject obj = new JSONObject();
+                            obj = jArr.optJSONObject(i);
+                            Log.d("Jarr", obj.toString());
+                            int id = obj.getInt("id");
+                            Log.d("id", String.valueOf(id));
+                            String plateNum = obj.getString("plateNum");
+                            Log.d("platenum", plateNum);
+                            String compareType = obj.getString("typeOfVehicle");
+                            Log.d("typeofvehicle", compareType);
+                            if (compareType.equals("Lorry")) {
+                                cardList.add(new vehicle_item(id, R.drawable.ic_lorry_icon, plateNum));
+                            } else if (compareType.equals("Motorbike")) {
+                                cardList.add(new vehicle_item(id, R.drawable.ic_motorcycle_icon, plateNum));
+                            } else {
+                                cardList.add(new vehicle_item(id, R.drawable.ic_car_icon, plateNum));
                             }
 
-                    }
-                    catch (JSONException e) {}
+                        }
+                        if (cardList.size() != 0) {
+                            //if(mRecyclerView.getAdapter() == null){
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if(mRecyclerView.getAdapter() == null) {
+                                        vehicle_card_adapter adapter = new vehicle_card_adapter(cardList);
+                                        mRecyclerView.setAdapter(adapter);
+                                    }else{
+                                        vehicle_card_adapter adapter = new vehicle_card_adapter(cardList);
+                                        mRecyclerView.setAdapter(adapter);
+                                        adapter.notifyDataSetChanged();
+                                    }
+                                }
+                            });
+
+                            //}else{
+                            //   vehicle_card_adapter adapter = new vehicle_card_adapter(cardList);
+                            //   mRecyclerView.setAdapter(adapter);
+                            //       adapter.notifyDataSetChanged();
+                        }
+                    } catch (JSONException e) {}
                 }
             }
         });
