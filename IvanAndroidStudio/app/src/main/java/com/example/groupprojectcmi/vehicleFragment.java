@@ -67,6 +67,8 @@ public class vehicleFragment extends Fragment {
         aLorry = rootView.findViewById(R.id.radio_aLorry);
         aBtn = rootView.findViewById(R.id.addVehicleBtn);
 
+        initData();
+
         aBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,8 +127,7 @@ public class vehicleFragment extends Fragment {
                                 @Override
                                 public void run() {
                                     Toast.makeText(getActivity(), "Vehicle added", Toast.LENGTH_SHORT).show();
-                                    update();
-                                    adapter.notifyDataSetChanged();
+                                    initData();
                                 }
                             });
                         }
@@ -149,12 +150,7 @@ public class vehicleFragment extends Fragment {
 
     }
 
-    public void update(){
-        initData();
-        vehicle_card_adapter adapter = new vehicle_card_adapter(list);
-        mRecyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-    }
+
 
     private void initData() {
         //Bind user's vehicle
@@ -206,13 +202,19 @@ public class vehicleFragment extends Fragment {
                                 }
 
                             }
+                            if(cardList.size() !=0){
+                                //if(mRecyclerView.getAdapter() == null){
+                                    vehicle_card_adapter adapter = new vehicle_card_adapter(cardList);
+                                    mRecyclerView.setAdapter(adapter);
+                                //}else{
+                                 //   vehicle_card_adapter adapter = new vehicle_card_adapter(cardList);
+                                 //   mRecyclerView.setAdapter(adapter);
+                                    //       adapter.notifyDataSetChanged();
+                                }
+                            }
 
                     }
                     catch (JSONException e) {}
-                    if()
-                    vehicle_card_adapter adapter = new vehicle_card_adapter(cardList);
-                    mRecyclerView.setAdapter(adapter);
-
                 }
             }
         });
