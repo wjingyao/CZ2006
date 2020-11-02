@@ -15,6 +15,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -57,6 +59,7 @@ import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 import static android.content.Context.LOCATION_SERVICE;
@@ -69,6 +72,8 @@ public class homeFragment extends Fragment implements OnMapReadyCallback {
     List<booking_item> cardList;
     Location mLastLocation;
     private static final int REQUEST_LOCATION_PERMISSION = 1;
+    Button searchBtn;
+    EditText search_txt;
 
     @Nullable
     @Override
@@ -77,6 +82,8 @@ public class homeFragment extends Fragment implements OnMapReadyCallback {
 
         mMapView = (MapView) rootView.findViewById(R.id.google_map);
         mMapView.onCreate(savedInstanceState);
+        search_txt = rootView.findViewById(R.id.search_textfield);
+        searchBtn = rootView.findViewById(R.id.search_btn);
 
         trackBook();
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
@@ -235,6 +242,43 @@ public class homeFragment extends Fragment implements OnMapReadyCallback {
             }
         });
 
+        searchBtn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                String searchTxt = search_txt.getText().toString().toString();
+                if(searchTxt != null && !searchTxt.equalsIgnoreCase("")){
+                    MediaType JSON = MediaType.get("application/json; charset=utf-8");  //dont change this part
+                    OkHttpClient client = new OkHttpClient();
+
+                        Request request = new Request.Builder()
+                                .url(api.baseUrl + "carParks/address/?address="+searchTxt)
+                                .addHeader("Authorization", "Bearer " + api.token)
+                                .get()
+                                .build();
+
+                    client.newCall(request).enqueue(new Callback() {
+
+                        @Override
+                        public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                                if(response.isSuccessful()){
+                                //    Intent intent = new Intent(getActivity(), mFragmentFavorite.class);
+                                 //   startActivity(intent);
+                                }else{
+
+                                }
+                        }
+
+                        @Override
+                        public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                            e.printStackTrace();
+                        }
+                    });
+
+
+                }else{
+
+                }
+            }
+        });
     }
 
 

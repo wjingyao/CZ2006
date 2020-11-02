@@ -19,7 +19,7 @@ public class CarParkController {
 	private CarParkService service;
 	
 	
-	@GetMapping("api/carParks/address")
+	@GetMapping("api/carParks/address/")
 	public List<CarPark> searchCarparkByAddress(@RequestParam String address){
 		//return placeholder
 		return service.getCarParks();
@@ -29,12 +29,6 @@ public class CarParkController {
 		return service.getNearbyCarParksByCoord(x, y, distance);
 	}
 	
-	@PutMapping("api/carParks/{id}")
-	public CarPark updateCarparkAvailableLots(@PathVariable int id , @RequestBody int num) {
-		CarPark cp = service.getCarParkById(id);
-		cp.setLot_available(cp.getLot_available()+num);
-		
-		return service.updateCarPark(cp);
-	}
+	
 	
 }

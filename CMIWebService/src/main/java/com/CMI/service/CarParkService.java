@@ -31,7 +31,7 @@ public class CarParkService {
 		return repository.findAll();
 	}
 	public CarPark getCarParkByCarParkName(String name) {
-		return repository.getCarParkByCarParkName(name);
+		return repository.getCarParkByCarParkNameIgnoreCase(name);
 	}
 	
 	public List<CarPark> getNearbyCarParksByCoord(double x , double y , double distance){

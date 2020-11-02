@@ -59,8 +59,6 @@ public class vehicleFragment extends Fragment {
         mRecyclerView = rootView.findViewById(R.id.vehicleRecyclerView);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        vehicle_card_adapter adapter = new vehicle_card_adapter(initData());
-        mRecyclerView.setAdapter(adapter);
 
         aVehicle = rootView.findViewById(R.id.addVehicle);
         aVehicleType = rootView.findViewById(R.id.radio_addVehicle);
@@ -127,7 +125,7 @@ public class vehicleFragment extends Fragment {
                                 @Override
                                 public void run() {
                                     Toast.makeText(getActivity(), "Vehicle added", Toast.LENGTH_SHORT).show();
-                                    update(initData());
+                                    update();
                                     adapter.notifyDataSetChanged();
                                 }
                             });
@@ -151,12 +149,14 @@ public class vehicleFragment extends Fragment {
 
     }
 
-    public void update(List<vehicle_item> list){
+    public void update(){
+        initData();
         vehicle_card_adapter adapter = new vehicle_card_adapter(list);
         mRecyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
-    private List<vehicle_item> initData() {
+    private void initData() {
         //Bind user's vehicle
         cardList = new ArrayList<>();
 
@@ -209,10 +209,14 @@ public class vehicleFragment extends Fragment {
 
                     }
                     catch (JSONException e) {}
+                    if()
+                    vehicle_card_adapter adapter = new vehicle_card_adapter(cardList);
+                    mRecyclerView.setAdapter(adapter);
+
                 }
             }
         });
 
-        return cardList;
+
     }
 }

@@ -12,7 +12,7 @@ import com.CMI.entity.CarPark;
 public interface CarParkRepository  extends JpaRepository<CarPark,Integer>{
 		
 	//CarPark getCarParksByPostalCode(int postalCode);
-	CarPark getCarParkByCarParkName(String carParkName);
+	CarPark getCarParkByCarParkNameIgnoreCase(String carParkName);
 	
 	List<CarPark> getCarParksByAddressContaining(String address);
 	
