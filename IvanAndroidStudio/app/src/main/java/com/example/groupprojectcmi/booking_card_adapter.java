@@ -85,7 +85,10 @@ public class booking_card_adapter extends RecyclerView.Adapter<booking_card_adap
                             if (response.isSuccessful()) {
                                 String myResponse = response.body().string();
                                 System.out.println(myResponse);
-                                System.out.println("YOYOYOYOYOYOYO");
+                                booking_item updateditem = mBookingList.get(getAdapterPosition());
+                                mBookingList.remove(getAdapterPosition());
+                                notifyItemRemoved(getAdapterPosition());
+
 
                             }
                         }

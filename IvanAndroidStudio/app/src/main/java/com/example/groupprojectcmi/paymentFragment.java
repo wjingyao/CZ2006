@@ -72,6 +72,36 @@ public class paymentFragment extends Fragment {
                 JSONObject dataBody = new JSONObject();                             //dont change this part
                 OkHttpClient client = new OkHttpClient();
 
+                if (TextUtils.isEmpty(ccv)) {
+                    txt_CCV.setError("CCV is Required");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(expiry)) {
+                    txt_Expiry.setError("Expiry Date is Required");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(cardNo)) {
+                    txt_CardNo.setError("Card Number is Required");
+                    return;
+                }
+
+                if (ccv.length() != 3) {
+                    txt_CCV.setError("CCV should be 3 digits");
+                    return;
+                }
+
+                if (cardNo.length() != 16) {
+                    txt_CardNo.setError("Card Number should be 16 digits");
+                    return;
+                }
+
+                if (expiry.length() != 4) {
+                    txt_Expiry.setError("Expiry date should be in MMYY");
+                    return;
+                }
+
                 try {
                     dataBody.put("cardNum", cardNo);
                     dataBody.put("ccv", ccv);
